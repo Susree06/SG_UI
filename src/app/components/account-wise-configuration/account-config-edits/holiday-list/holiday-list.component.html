@@ -1,0 +1,14 @@
+<div class="holiday-container" [formGroup]="manageAccountForm">
+    <div class="sub-container">
+      <h2>Fixed Holidays</h2>
+      <mat-form-field appearance="outline">
+        <mat-select (valueChange)="valueChanged($event)" formControlName="accountCtrl">
+            <mat-option *ngFor="let item of location" [value]="item.id">{{ item.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-icon style="cursor: pointer" (click)="onClose()">close</mat-icon>
+    </div>
+    <div>
+        <app-holiday-list-table [locationId]="currentLocationId"></app-holiday-list-table>
+    </div>
+</div>

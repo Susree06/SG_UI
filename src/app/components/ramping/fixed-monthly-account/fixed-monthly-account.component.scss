@@ -1,0 +1,119 @@
+.fixed-monthly-container {
+  padding-left: 70px;
+  padding-right: 70px;
+  .visa-detail-title {
+    font-weight: 500;
+    color: #254067;
+    border-bottom: 1px solid #254067;
+    display: inline-block;
+    //position: relative;
+  }
+  .mdc-data-table__cell,
+  .mdc-data-table__header-cell {
+    padding: 2px;
+  }
+
+  table {
+    width: 1400px;
+  }
+  ::ng-deep.mat-column-Account {
+    width: 200px !important;
+    background-color: #dbedde;
+    padding-left: 10px !important;
+  }
+  ::ng-deep.mat-column-Project-Name {
+    width: 200px !important;
+    padding-left: 10px !important;
+  }
+  ::ng-deep.mat-mdc-cell.mat-column-Account,
+  .mat-column-Project-Name {
+    font-weight: 500;
+  }
+
+  .visa-container {
+    background-color: #fff;
+    padding: 0px;
+    border-radius: 10px;
+
+    .search-box {
+      position: relative;
+      background-color: #02aab0;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      padding: 3px;
+      width: 100%;
+      max-width: 300px;
+    }
+    .search-box .search-txt {
+      border: none;
+      background: none;
+      outline: none;
+      padding: 0;
+      color: white;
+      font-size: 16px;
+      transition: 0.4s;
+      line-height: 40px;
+      flex-grow: 1;
+      margin-left: 25px;  
+    }
+    .search-box .search-btn {
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+    }
+    .search-box:hover > .search-txt {
+      width: 240px;
+      padding: 0 6px;
+    }
+    .search-box:hover > .search-btn {
+      background: #fff;
+    }
+    .search-txt::placeholder {
+      text-align: right;
+      padding: 10px;
+      color: #fff;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      // border-radius: 10px 10px 0 0;
+      border-top: 1px solid #f0eeee;
+      border-left: 1px solid #f0eeee;
+      border-right: 1px solid #f0eeee;
+      border-bottom: 1px solid #f0eeee;
+      .mat-mdc-table thead {
+        background: #439495 !important;
+      }
+    }
+  }
+  .paginator {
+    border: 1px solid #e4e4e4c5;
+    border-radius: 5px;
+    background: linear-gradient(to right bottom, #eff0f3, #e5e6eb);
+  }
+  .leave-details-save-btn {
+    color: #fff;
+    background-color: #254067;
+  }
+  .table-edit-button {
+    color: #3bb54a;
+  }
+  .mat-mdc-table tbody,
+  .mat-mdc-header-cell {
+    background: #439495 !important;
+  }
+  .mdc-data-table__header-cell {
+    color: #fff;
+  }
+  .no-data-found {
+    text-align: center;
+    padding: 16px;
+    font-size: 18px;
+    color:#254067 ;
+  }
+}

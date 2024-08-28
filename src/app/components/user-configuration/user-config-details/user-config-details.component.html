@@ -1,0 +1,79 @@
+<div class="container-fluid user-config-dialog-container">
+  <div class="row pt-2">
+    <div class="col-sm-12 d-flex justify-content-between">
+      <h2 mat-dialog-title class="">Manage User Accounts</h2>
+      <mat-icon style="cursor: pointer" class="close-btn" (click)="onClose()">close</mat-icon>
+    </div>
+  </div>
+  <mat-dialog-content>
+    <form autocomplete="off" [formGroup]="userConfigForm" class="example-form">
+      <div class="row d-flex justify-content-between">
+        <div class="col-sm-4">
+          <mat-form-field class="example-form-field">
+            <mat-label>Select Account</mat-label>
+            <input #accountInput type="text" matInput formControlName="accountFilterCtrl" [matAutocomplete]="auto1"
+              (input)="filterAccounts()" [disabled]="true" [ngModel]="selectedAccountName | accountName"
+              (ngModelChange)="selectedAccountName = $event" required />
+            <mat-error *ngIf="userConfigForm.get('accountFilterCtrl')?.hasError('required')"> Account is required
+            </mat-error>
+            <mat-autocomplete requireSelection #auto1="matAutocomplete">
+              <mat-option *ngFor="let item of filteredAccounts; index as i" [value]="item.customerName"
+                (click)="getAccountDetails(item)">
+                {{ item.customerName | accountName }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="example-form-field">
+            <mat-label>Select DM</mat-label>
+            <mat-select formControlName="dmFilterCtrl" #optsDM multiple (openedChange)="searchCtrlDM.setValue('')">
+              <div class="checkbox-container">
+                <app-search-input [searchCtrl]="searchCtrlDM"></app-search-input>
+              </div>
+              <mat-divider></mat-divider>
+              <div class="options">
+                <div *ngIf="
+                            searchCtrlDM.value && !optsDM.options.length
+                          " class="no-data" disabled>
+                  No results found for "{{ searchCtrlDM.value }}".
+                </div>
+                <mat-option [disabled]="isOptionDisabled()" *ngFor="let item of filteredDMOptions | async" [value]="item.userId"
+                  (onSelectionChange)="onSelectionChange($event,'DM')">
+                  {{ item.userName }}
+                </mat-option>
+              </div>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-4">
+          <mat-form-field class="example-form-field">
+            <mat-label>Select BDM</mat-label>
+            <mat-select formControlName="bdmFilterCtrl" #optsBDM multiple (openedChange)="searchCtrlBDM.setValue('')">
+              <div class="checkbox-container">
+                <app-search-input [searchCtrl]="searchCtrlBDM"></app-search-input>
+              </div>
+              <mat-divider></mat-divider>
+              <div class="options">
+                <div *ngIf="
+                            searchCtrlBDM.value && !optsBDM.options.length
+                          " class="no-data" disabled>
+                  No results found for "{{ searchCtrlBDM.value }}".
+                </div>
+                <mat-option [disabled]="isOptionDisabled()" *ngFor="let item of filteredBDMOptions | async" [value]="item.userId"
+                  (onSelectionChange)="onSelectionChange($event,'BDM')">
+                  {{ item.userName }}
+                </mat-option>
+              </div>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-2">
+        <button mat-raised-button class="save-button " (click)="onSave()">
+          {{ action === "edit" ? "Update" : "Save" }}
+        </button>
+      </div>
+    </form>
+  </mat-dialog-content>
+</div>

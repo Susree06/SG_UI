@@ -1,0 +1,97 @@
+<div class="file-upload-container container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="file-upload-title">File Uploaded List</h1>
+    </div>
+    <div class="col-sm-12 mt-3">
+      <div class="col-sm-6">
+        <div class="search-box mb-3" [hidden]="dataSource?.data.length === 0">
+          <input
+            class="search-txt"
+            type="text"
+            name=""
+            id=""
+            (keyup)="applyFilter($event)"
+            placeholder="Enter File Name"
+            matInput
+            #input
+          />
+          <a class="search-btn">
+            <img src="../../../assets/icons/search-icon.svg" alt="" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="table-wrapper">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="FileName">
+            <mat-header-cell *matHeaderCellDef>File Name </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.fileName }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="UploadedBy">
+            <mat-header-cell *matHeaderCellDef> Uploaded By </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.uploadedBy | titlecase }}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Remark">
+            <mat-header-cell *matHeaderCellDef> Remark </mat-header-cell>
+            <mat-cell
+              #tdElement
+              [class.row-highlight]="element.id"
+              [matTooltip]="element.remark"
+              [matTooltipDisabled]="!isOverflow(tdElement)"
+              matTooltipPosition="below"
+              matTooltipClass="tooltip"
+              class="remark-mat-cell"
+              *matCellDef="let element"
+            >
+              {{ element.remark }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Status">
+            <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.status }}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="CreatedOn">
+            <mat-header-cell *matHeaderCellDef>
+              Uploaded Date(UTC)
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.createdOn | date : "dd-MM-yyyy HH:mm:ss" }}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Download">
+            <mat-header-cell *matHeaderCellDef> Download </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-icon *ngIf="element.status === 'Failed'">
+                <a class="disable-button" href="{{ element.link }}">download</a>
+              </mat-icon>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          <tr class="mat-row " *matNoDataRow>
+            <td class="mat-cell no-data-found"  colspan="5">No data Found !</td>
+          </tr>
+        </table>
+      </div>
+      <div class="paginator">
+        <mat-paginator
+          fixed
+          [pageSizeOptions]="[5, 10, 20, 50]"
+          showFirstLastButtons
+        >
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

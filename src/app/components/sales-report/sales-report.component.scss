@@ -1,0 +1,134 @@
+.sales-report-container {
+  .filter-icon {
+    margin-right: 8px;
+    color: #fff;
+  }
+  //Search box
+  .no-data-found {
+    text-align: center;
+    padding: 16px;
+    font-size: 18px;
+    color: #254067;
+  }
+  .search-box {
+    position: relative;
+    background-color: #02aab0;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    width: 100%;
+    // max-width: 300px;
+    max-height: 54px;
+  }
+  .search-box .search-txt {
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+
+  .search-box .search-btn {
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+  }
+
+  .search-box:hover > .search-txt {
+    width: 60px;
+    padding: 0 6px;
+  }
+
+  .search-box:hover > .search-btn {
+    background: #fff;
+  }
+
+  .search-txt::placeholder {
+    text-align: right;
+    padding: 10px;
+    color: #fff;
+  }
+  padding-left: 70px;
+  padding-right: 70px;
+  .sales-report-title {
+    font-weight: 500;
+    color: #254067;
+    border-bottom: 1px solid #254067;
+    display: inline-block;
+    position: relative;
+  }
+  .excel-export-btn {
+    border-radius: 4px;
+    letter-spacing: 0px;
+    color: #fff;
+    background: #254067;
+    cursor: pointer;
+  }
+  .tab-container {
+    background-color: antiquewhite;
+  }
+  .table-wrapper {
+    border: 2px solid #519899;
+    ::ng-deep.mat-mdc-table thead {
+      background: #f5fff6 !important;
+    }
+    overflow-x: auto;
+  }
+  .mdc-data-table__table {
+    margin-top: 0px !important;
+  }
+  ::ng-deep.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+    color: #000 !important;
+  }
+  ::ng-deep.mat-mdc-tab.mdc-tab--active {
+    background-color: #9ad0c2;
+  }
+  .search-btn {
+    color: #2c953a;
+  }
+  table {
+    width: 100%;
+  }
+  ::ng-deep.mat-column-Account {
+    white-space: nowrap !important;
+    flex: 0 0 20% !important;
+    width: 20% !important;
+    background-color: #dbedde;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  ::ng-deep.mat-column-Account-Manager {
+    white-space: nowrap !important;
+    flex: 0 0 90% !important;
+    width: 40% !important;
+    background-color: #f5fff6;
+  }
+  mat-form-field {
+    width: 100%;
+  }
+  .filter-button {
+    border-radius: 4px;
+    letter-spacing: 0px;
+    color: #fff;
+    background: #254067;
+    cursor: pointer;
+  }
+  .search-icon {
+    width: 20px;
+    height: 20px;
+    // margin-right: 5px;
+    color: #fff;
+  }
+}

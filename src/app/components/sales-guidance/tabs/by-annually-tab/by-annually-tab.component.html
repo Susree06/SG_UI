@@ -1,0 +1,49 @@
+<div class="example-container">
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="Accounts" class="mat-column">
+        <mat-header-cell  *matHeaderCellDef> Accounts </mat-header-cell>
+        <mat-cell class="mat-cell-acc" *matCellDef="let element"> {{element.Accounts}} </mat-cell>
+      </ng-container>
+  
+      <!-- <ng-container matColumnDef="Projects">
+        <mat-header-cell *matHeaderCellDef>Projects  </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Projects}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Average">
+        <mat-header-cell *matHeaderCellDef> Average </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Average}} </mat-cell>
+      </ng-container>
+   -->
+   <ng-container matColumnDef="BlendedRate">
+    <mat-header-cell *matHeaderCellDef> Blended Rate </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.BlendedRate}} </mat-cell>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="Average">
+    <mat-header-cell *matHeaderCellDef> Average Price</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.Average}} </mat-cell>
+  </ng-container> -->
+
+      <ng-container matColumnDef="Location">
+        <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Location}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Action">
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <mat-icon style="color: #53B750;" (click)="editAccDetails()">edit</mat-icon>
+              </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  

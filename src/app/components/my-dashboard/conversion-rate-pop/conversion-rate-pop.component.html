@@ -1,0 +1,63 @@
+<div class="conversion-rate-popup-container">
+  <div class="container pl-3 pr-3 pt-2">
+    <div class="col-sm-12 d-flex justify-content-between mt-3">
+      <h2 class="conversion-rate-heading">Conversion Rate</h2>
+      <mat-icon style="cursor: pointer" (click)="onClose()">close</mat-icon>
+    </div>
+    <form class="row" [formGroup]="conversionRateForm">
+      <div mat-dialog-content>
+        <div class="row">
+          <mat-form-field class="col-4 mb-2">
+            <mat-label>Currency</mat-label>
+            <input
+              matInput
+              type="text"
+              placeholder="Enter"
+              maxlength="50"
+              formControlName="conversionCurrency"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="col-4 mb-2">
+            <mat-label>Rate</mat-label>
+            <input
+              type="number"
+              decimalNumber
+              matInput
+              (input)="onChange($event.target)"
+              placeholder="Enter"
+              maxlength="5"
+              formControlName="rate"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="col-4 mb-2">
+            <mat-label>From Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              [min]="minDate"
+              formControlName="fromDate"
+              (dateChange)="addEvent($event)"
+            />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-sm-12 d-flex justify-content-center">
+        <button
+          mat-raised-button
+          [ngClass]="isFormValid() ? 'disable-button' : 'apply-button'"
+          [disabled]="isFormValid()"
+          (click)="onApply()"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

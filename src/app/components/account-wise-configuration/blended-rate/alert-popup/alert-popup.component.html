@@ -1,0 +1,33 @@
+<div mat-dialog-title>
+  <mat-label class="title-label"> {{ title }}</mat-label>
+</div>
+
+<mat-dialog-content>
+  <!-- <mat-label class="title-label"> {{ title }}</mat-label> -->
+</mat-dialog-content>
+
+<mat-dialog-actions
+  class="mat-dialog-actions"
+  mat-dialog-actions
+  align="end"
+  layout="row"
+>
+  <div>
+    <button
+      mat-button
+      type="button"
+      class="cancel-Button"
+      (click)="cancelClickEvent()"
+    >
+    {{buttonCancel}}
+    </button>
+    <button
+      class="delete-button"
+      mat-button
+      type="button"
+      (click)="deleteClickEvent()"
+    >
+    {{buttonOk}}
+  </button>
+  </div>
+</mat-dialog-actions>

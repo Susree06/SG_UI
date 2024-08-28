@@ -1,0 +1,85 @@
+<div class="manage-account-container" [formGroup]="manageAccountForm">
+  <div style="display: flex; justify-content: space-between">
+    <h2>Manage Account</h2>
+    <mat-icon style="cursor: pointer" (click)="onClose()">close</mat-icon>
+  </div>
+  <div>
+    <h4 class="sub-heading">Type</h4>
+    <mat-radio-group formControlName="typeCtrl">
+      <mat-radio-button *ngFor="let item of radioGroup" [value]="item.id" (change)="onTypeChange($event)">
+        {{ item.name }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <br />
+  <div>
+    <h4 class="sub-heading">Account</h4>
+    <mat-form-field class="form-field" style="width: 400px;" appearance="outline"
+    *ngIf="manageAccountForm.get('typeCtrl')?.value !== 2">
+      <mat-select placeholder="Select" formControlName="accountCtrl">
+        <mat-option *ngFor="let item of AccountsList" [value]="item.accountId">
+          {{ item.customerName | accountName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline"
+      *ngIf="manageAccountForm.get('typeCtrl')?.value === 2">
+      <input matInput type="text" placeholder="Enter" maxlength="50" formControlName="accountName" (keyup)="onAccountChange()"/>
+    </mat-form-field>
+    <mat-error style="padding-top: 5px; margin-top: 1em;"*ngIf="isError">Account already present</mat-error>
+  </div>
+  <br />
+  <div>
+    <h4 class="sub-heading">Project</h4>
+    <mat-form-field class="form-field" appearance="outline">
+      <input matInput type="text" placeholder="Enter" maxlength="50" formControlName="projectName" (keyup)="onProjectChange()"/>
+    </mat-form-field>
+    <mat-error style="padding-top: 5px; margin-top: 1em;"*ngIf="isProjError">Project already present</mat-error>
+  </div>
+  <br>
+
+  <div>
+    <h4 class="sub-heading">Contract Type</h4>
+    <mat-form-field class="form-field" style="width: 400px;" appearance="outline">
+      <mat-select placeholder="Select" formControlName="contractType" (selectionChange)="contactTypeCheck($event)">
+        <mat-option *ngFor="let item of ContractType" [value]="item.Type">
+          {{ item.Type }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-error style="padding-top: 5px; margin-top: 1em;"*ngIf="isError">Account already present</mat-error>
+  </div>
+  <br />
+  <div class="new-form-field">
+    <h4 style="padding-top: 10px;">Onsite Blended Rate:</h4>
+    <mat-form-field style="width: 117px; padding-left: 27px;" appearance="outline">
+      <input matInput type="text" placeholder="Enter" maxlength="5" formControlName="onSiteRate" numbersOnly/>
+    </mat-form-field>
+  </div>
+
+  <div class="new-form-field">
+    <h4 style="padding-top: 10px;">Offshore Blended Rate:</h4>
+    <mat-form-field style="width: 100px; padding-left: 10px;" appearance="outline">
+      <input matInput type="text" placeholder="Enter" maxlength="5" formControlName="offShoreRate" numbersOnly/>
+    </mat-form-field>
+  </div>
+
+  <div class="new-form-field">
+    <h4 style="padding-top: 10px;">Probability in %: </h4> 
+     <div>
+       <mat-form-field style="width: 154px; padding-left: 65px;" appearance="outline">
+         <input matInput type="number"
+         min="0"
+         max="100" placeholder="Enter" maxlength="5" formControlName="probabilityForm" numbersOnly/>
+       </mat-form-field>
+     </div>
+   </div>
+   <mat-error *ngIf="this.manageAccountForm.get('probabilityForm').hasError('max')">
+    Please enter value between 0 to 100
+  </mat-error>
+  <div class="d-flex justify-content-center">
+    <button mat-raised-button [ngClass]="isFormValid()?'disable-button':'apply-button'" [disabled]="isFormValid()" (click)="onApply()">
+      Submit
+    </button>
+  </div>
+</div>

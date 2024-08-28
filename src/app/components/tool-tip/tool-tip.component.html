@@ -1,0 +1,26 @@
+<div class="tooltip-container" (mouseover)="showTooltip()" (mouseout)="hideTooltip()">
+      <div class="tooltip-icon">
+  <img src="../../../assets/icons/information.svg" alt="Message Icon">
+</div>
+    <div class="tooltip-content" [ngClass]="{'visible': isTooltipVisible, 'left-align': isLeftAligned}">
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-color not-approved"></div>
+          <span>Not Approved</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color approved"></div>
+          <span>Approved</span>
+        </div>
+        <!-- <div class="legend-item">
+          <div class="legend-color latest-approved"></div>
+          <span>Latest Approved</span>
+        </div> -->
+        <!-- <div class="legend-item">
+          <div class="legend-color updated"></div>
+          <span>Approved and System Data Updated</span>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,103 @@
+<div class="example-container">
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="Accounts" class="mat-column">
+        <mat-header-cell  *matHeaderCellDef> Accounts </mat-header-cell>
+        <mat-cell class="mat-cell-acc" *matCellDef="let element"> {{element.Accounts}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Projects">
+        <mat-header-cell *matHeaderCellDef>Projects  </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Projects}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Average">
+        <mat-header-cell *matHeaderCellDef> Average </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Average}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Location">
+        <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.Location}} </mat-cell>
+      </ng-container>
+  
+  
+  
+      <ng-container matColumnDef="Jan">
+          <mat-header-cell *matHeaderCellDef> Jan </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Jan}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Feb">
+          <mat-header-cell *matHeaderCellDef>Feb  </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Feb}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Mar">
+          <mat-header-cell *matHeaderCellDef> Mar </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Mar}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Apr">
+          <mat-header-cell *matHeaderCellDef> Apr </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Apr}} </mat-cell>
+        </ng-container>
+  
+  
+  
+        <ng-container matColumnDef="May">
+          <mat-header-cell *matHeaderCellDef> May </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.May}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Jun">
+          <mat-header-cell *matHeaderCellDef>Jun  </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Jun}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Jul">
+          <mat-header-cell *matHeaderCellDef> Jul </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Jul}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Aug">
+          <mat-header-cell *matHeaderCellDef> Aug </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Aug}} </mat-cell>
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="Sep">
+          <mat-header-cell *matHeaderCellDef> Sep </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Sep}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Oct">
+          <mat-header-cell *matHeaderCellDef>Oct  </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Oct}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Nov">
+          <mat-header-cell *matHeaderCellDef> Nov </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Nov}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Dec">
+          <mat-header-cell *matHeaderCellDef> Dec </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Dec}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Action">
+          <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+              <mat-icon style="color: #53B750;" (click)="editAccDetails()">edit</mat-icon>
+                </mat-cell>
+        </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  

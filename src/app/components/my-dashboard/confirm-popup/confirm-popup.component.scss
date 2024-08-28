@@ -1,0 +1,20 @@
+.confirm-popup{
+    overflow:hidden;
+    .yes-btn-dialog{
+    color: #254067;
+    font-weight: 500;
+ 
+    }
+    .no-btn-dialog{
+    color: #FF605C;
+    font-weight: 500;
+    }
+    ::ng-deep.mat-mdc-checkbox label {
+        top: 4px;
+        position: relative;
+     }
+     .example-section{
+        margin-bottom: 10px;
+        margin-left: 13px;
+     }
+ }

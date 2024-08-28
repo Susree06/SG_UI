@@ -1,0 +1,267 @@
+<div class="container-fluid sales-report-container">
+    <div class="spinner-container" *ngIf="isLoaded">
+        <!-- <mat-spinner [diameter]="70"></mat-spinner> -->
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-12 mt-4 pb-3">
+            <h1 class="sales-report-title"> Project Revenue Report</h1>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-12 mb-2 position-relative">
+                <!-- <div class="row">
+                    <div class="col-sm-4 d-flex justify-content-start">
+                        <form [formGroup]="projectForm" style="width:440px">
+                            <mat-form-field class="example-form-field" appearance="outline">
+                                <mat-label>Projects</mat-label>
+                                <input
+                                    #accountInput
+                                    type="text"
+                                    matInput
+                                    formControlName="projectId"
+                                    [matAutocomplete]="auto5"
+                                    (input)="filterCouncils()"
+                                    [(ngModel)]="selectedAccount" 
+                                    (ngModelChange)="onSelectionChange('customer Name', $event)"
+                                    #autocompleteTrigger="matAutocompleteTrigger"
+                                />
+                            </mat-form-field>
+                            <mat-autocomplete #auto5="matAutocomplete" [displayWith]="displayFn">
+                                <mat-option selected class="option-class" >
+                                    <div (click)="optionClicked($event, 'ALL')" class="checkbox-container">
+                                        <mat-checkbox class="mt-checkbox-custom"
+                                            [checked]="selection.isSelected('ALL')"
+                                            (change)="$event ? selection.toggle('ALL') : null"
+                                            (click)="toggleSelection('ALL')"
+                                        >
+                                            Select All
+                                        </mat-checkbox>
+                                    </div>
+                                </mat-option>
+
+                                <mat-option class="option-class"
+                                    *ngFor="let item of filteredAccount">
+                                    <div (click)="optionClicked($event, item)" class="checkbox-container">
+                                        <mat-checkbox class="mt-checkbox-custom"
+                                        #checkbox
+                                        [checked]="selection.isSelected(item)"
+                                        (change)="$event ? selection.toggle(item) : null"
+                                        (click)="toggleSelection(item)"
+                                        >
+                                            {{item.projectName}}
+                                        </mat-checkbox>
+                                    </div>
+                                </mat-option>
+                            </mat-autocomplete>
+                        </form>
+                    </div>
+
+                    <div class="col-sm-2 d-flex justify-content-center">
+                        <mat-form-field>
+                            <mat-label>Financial Year</mat-label>
+                            <mat-select multiple [(ngModel)]="selectedYear" (ngModelChange)="onSelectionChange('FinancialYear', $event)" >
+                                <mat-option [value]="yearList" *ngFor="let yearList of Years" [disabled]="isSelectionDisabled('FinancialYear',yearList)">{{yearList}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                                        <div class="col-sm-2 d-flex justify-content-center" *ngIf="showMonthlyDropdown">
+                        <mat-form-field>
+                            <mat-label>Months</mat-label>
+                            <mat-select multiple [(ngModel)]="selectedMonth" (ngModelChange)="onSelectionChange('Month', $event)">
+                                <mat-option [value]="monthList" *ngFor="let monthList of Months">{{monthList}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-sm-2 d-flex justify-content-center" *ngIf="showQurterlyDropdown">
+                        <mat-form-field >
+                            <mat-label>Quarter</mat-label>
+                            <mat-select multiple [(ngModel)]="selectedQuarter" (ngModelChange)="onSelectionChange('quarter', $event)" >
+                                <mat-option [value]="quarter" *ngFor="let quarter of quarters" >{{quarter}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+    
+                    <div class="col-sm-2 d-flex justify-content-center" *ngIf="showHalfYearlyDropdown">
+                        <mat-form-field >
+                            <mat-label>Half Yearly</mat-label>
+                            <mat-select multiple [(ngModel)]="selectedHalfYearly" (ngModelChange)="onSelectionChange( 'Half Year',$event)" >
+                                <mat-option [value]="halfYearly" *ngFor="let halfYearly of halfYear" >{{halfYearly}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-sm-2 d-flex justify-content-center">
+                        <div class="search-box mb-1">
+                            <input class="search-txt" type="text" (keyup)="applyFilter($event)" name="" id=""
+                              placeholder="Search" matInput #input>
+                            <a class="search-btn">
+                              <img src="../../../assets/icons/search-icon.svg" alt="">
+                              
+                            </a>
+                          </div>
+                    </div>
+
+                    <div class="col-sm-2 position-absolute end-0 d-flex justify-content-end">
+                        <button (click)="exportToExcel()" mat-raised-button class="excel-export-btn mt-2 p-3">Export to Excel</button>
+                    </div>
+                    
+
+                </div> -->
+                <div class="col-sm-12 mb-2 position-relative">
+                    <div class="row">
+                      <div class="col-sm-2 d-flex justify-content-start">
+                        <button
+                          (click)="toggleFilterVisibility()"
+                          mat-raised-button
+                          class="mt-3 p-3 filter-button"
+                        >  <mat-icon class="filter-icon">filter_list</mat-icon>
+                          Filter
+                        </button>
+                      </div>
+                      <div
+                        class="col-sm-2 position-absolute end-0 d-flex justify-content-end"
+                      >
+                        <button
+                          (click)="exportToExcel()"
+                          mat-raised-button
+                          class="excel-export-btn mt-3 p-3"
+                        >
+                        <mat-icon class="export-icon">cloud_download</mat-icon>
+                          Export to Excel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+        </div>
+        
+
+        <div class="col-sm-12 mb-5">
+            <mat-tab-group class="mb-5 tab-container" (selectedTabChange)="selectedTab($event)">
+                
+                <mat-tab label="Monthly">
+                    <div class="table-wrapper">
+                        <table mat-table [dataSource]="MonthlyDataSource">
+                            <ng-container *ngFor="let column of displayedMonthlyCol; let i=index" [matColumnDef]="column" [sticky]="isSticky(column)">
+                                
+                                <th mat-header-cell *matHeaderCellDef> {{ column }} </th>
+                                <span *ngIf="column == 'Account'">
+                                    <td mat-cell *matCellDef="let element" [class.sticky-row]="i==0 && column === 'Account'"> {{ element[column] | accountName}} </td>
+                                </span>
+                                <span *ngIf="column != 'Account' && column == 'Account Manager'">
+                                    <td mat-cell *matCellDef="let element" [class.sticky-row]="i==0 && column === 'Account Manager'"> {{ element[column] }} </td>
+                                </span>
+                                <span *ngIf="column != 'Account' && column != 'Account Manager'">
+                                    <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+                                </span>
+                                
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedMonthlyCol"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedMonthlyCol;"></tr>
+                            <tr class="mat-row " *matNoDataRow>
+                                <td class="mat-cell no-data-found"  colspan="5">No data found!</td>
+                            </tr>
+                        </table>
+                    </div>
+                        <div class="paginator">
+                            <mat-paginator #MonthlyPaginator fixed [pageSizeOptions]="[5, 10, 20, 50]"
+                                showFirstLastButtons>
+                            </mat-paginator>
+                        </div>
+                </mat-tab>
+
+                <mat-tab label="Quaterly">
+                    <div class="table-wrapper ">
+                        <table mat-table [dataSource]="QuarterlyDataSource">
+                            <ng-container *ngFor="let column of displayedQuarterlyCol; let i=index" [matColumnDef]="column" [sticky]="isSticky(column)">
+                                <th mat-header-cell *matHeaderCellDef> {{ column }} </th>
+                                <span *ngIf="column == 'Account'">
+                                    <td mat-cell *matCellDef="let element" [class.sticky-row]="i==0 && column === 'Account'"> {{ element[column] | accountName}} </td>
+                                </span>
+                                <span *ngIf="column != 'Account' && column == 'Account Manager'">
+                                    <td mat-cell *matCellDef="let element" [class.sticky-row]="i==0 && column === 'Account Manager'"> {{ element[column] }} </td>
+                                </span>
+                                <span *ngIf="column != 'Account' && column != 'Account Manager'">
+                                    <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+                                </span>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedQuarterlyCol"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedQuarterlyCol;"></tr>
+                            <tr class="mat-row " *matNoDataRow>
+                                <td class="mat-cell no-data-found"  colspan="5">No data found!</td>
+                            </tr>
+                        </table>
+                    </div>
+                        <div class="paginator">
+                            <mat-paginator #QuarterlyPaginator fixed [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons>
+                            </mat-paginator>
+                        </div>
+                </mat-tab>
+
+                <mat-tab label="HalfYearly">
+                    <div class="table-wrapper">
+                        <table mat-table [dataSource]="HalfYearlyDataSource">
+                            <ng-container *ngFor="let column of displayedHalfYearlyCol; let i=index" [matColumnDef]="column" [sticky]="isSticky(column)">
+                                <th mat-header-cell *matHeaderCellDef> {{ column }} </th>
+                                <span *ngIf="column == 'Account'">
+                                    <td mat-cell *matCellDef="let element" [class.sticky-row]="i==0 && column === 'Account'"> {{ element[column] | accountName}} </td>
+                                </span>
+                                <span *ngIf="column != 'Account' && column == 'Account Manager'">
+                                    <td mat-cell *matCellDef="let element" [class.sticky-row]="i==0 && column === 'Account Manager'"> {{ element[column] }} </td>
+                                </span>
+                                <span *ngIf="column != 'Account' && column != 'Account Manager'">
+                                    <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+                                </span>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedHalfYearlyCol"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedHalfYearlyCol;"></tr>
+                            <tr class="mat-row " *matNoDataRow>
+                                <td class="mat-cell no-data-found"  colspan="5">No data found!</td>
+                              </tr>
+                        </table>
+                    </div>
+                        <div class="paginator">
+                            <mat-paginator #HalfYearlyPaginator fixed [pageSizeOptions]="[5, 10, 20, 50]"
+                                showFirstLastButtons>
+                            </mat-paginator>
+                        </div>               
+                </mat-tab>
+
+                <mat-tab label="Yearly">
+        
+                    <div class="table-wrapper">
+                        <table mat-table [dataSource]="YearlyDataSource">
+                            <ng-container *ngFor="let column of displayedYearlyCol; let i=index" [matColumnDef]="column" [sticky]="isSticky(column)">
+                                <th mat-header-cell *matHeaderCellDef> {{ column }} </th>
+                                <span *ngIf="column == 'Account'">
+                                    <td mat-cell *matCellDef="let element" [class.sticky-row]="i==0 && column === 'Account'"> {{ element[column] | accountName}} </td>
+                                </span>
+                                <span *ngIf="column != 'Account' && column == 'Account Manager'">
+                                    <td mat-cell *matCellDef="let element" [class.sticky-row]="i==0 && column === 'Account Manager'"> {{ element[column] }} </td>
+                                </span>
+                                <span *ngIf="column != 'Account' && column != 'Account Manager'">
+                                    <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+                                </span>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedYearlyCol"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedYearlyCol;"></tr>
+                            <tr class="mat-row " *matNoDataRow>
+                                <td class="mat-cell no-data-found"  colspan="5">No data found!</td>
+                              </tr>
+                        </table>
+                    </div>
+                        <div class="paginator">
+                            <mat-paginator #YearlyPaginator fixed [pageSizeOptions]="[5, 10, 20, 50]"
+                                showFirstLastButtons>
+                            </mat-paginator>
+                        </div>   
+                </mat-tab>
+
+            </mat-tab-group>
+        </div>
+
+
+
+    </div>
+</div>

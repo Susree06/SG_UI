@@ -1,0 +1,75 @@
+.ops-role-dialog {
+    // .title {
+    //   margin-left: 18px;
+    //   color: #254067;
+    // }
+    .close-modal-icon {
+      color: #254067;
+      cursor: pointer;
+      margin-top: 19px;
+    }
+    .search-button {
+      background-color: #254067;
+      color: #fff;
+      font-weight: 400;
+    }
+    .close-btn-dialog {
+      top: 40px;
+      background-color: #ff605c;
+      color: #fff;
+      font-weight: 400;
+    }
+    .dialog-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+  
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+  
+    .form-group {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  
+    .form-field {
+      width: 100%;
+    }
+  }
+  
+  .mat-form-field,
+  app-search-input {
+    width: 100%;
+  }
+  
+  .mat-checkbox {
+    margin-right: 8px;
+  }
+  
+  .checkbox-container {
+    height: 44px;
+    margin: 0 10px 0 6px;
+    display: flex;
+  }
+  
+  .options {
+    max-height: 211px;
+    overflow: auto;
+  }
+  
+  .no-data {
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    opacity: 0.75;
+    font-weight: 500;
+  }

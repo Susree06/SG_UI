@@ -1,0 +1,35 @@
+.user-config-dialog-container {
+  .save-button {
+    background-color: #254067;
+    color: #fff;
+    font-weight: 400;
+  }
+  .close-btn{
+    position: relative;
+    right: 10px;
+    margin-top: 15px;
+  }
+}
+app-search-input {
+  width: 100%;
+}
+.mat-checkbox {
+  margin-right: 8;
+}
+.checkbox-container {
+  height: 44px;
+  margin: 0 10px 0 6px;
+  display: flex;
+}
+.options {
+  max-height: 211px;
+  overflow: auto;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  opacity: 0.75;
+  font-weight: 500;
+}

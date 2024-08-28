@@ -1,0 +1,52 @@
+<div class="leaves-in-percentage-edit-dialog">
+  <h4 mat-dialog-title class="title">
+      {{ accountName | accountName }} {{ " | " + location }}
+      <strong>{{ currentYear }}</strong>
+    <mat-icon mat-dialog-close class="close-modal-icon float-end ml-4"
+      >close</mat-icon
+    >
+  </h4>
+  <div mat-dialog-content>
+    <div class="sub-container">
+      <div *ngFor="let item of months">
+        <form autocomplete="off" [formGroup]="editLeavesForm">
+          <mat-form-field class="form-field-container" appearance="outline">
+            <mat-label class="custom-mat-label">{{ item.name }}</mat-label>
+            <input
+              [formControlName]="item.ctrl"
+              matInput
+              type="text"
+              maxlength="3"
+              [value]="leaves"
+              (input)="onChange($event.target)"
+              numbersOnly
+            />
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+
+    <div *ngFor="let data of months">
+      <mat-error
+        *ngIf="
+          this.editLeavesForm.controls[data.ctrl].hasError('max') ||
+          this.editLeavesForm.controls[data.ctrl].hasError('min')
+        "
+      >
+        Please enter value between 0 to 100
+      </mat-error>
+    </div>
+  </div>
+  <div mat-dialog-actions class="justify-content-center">
+    <div class="update-btn">
+      <button
+        mat-raised-button
+        [ngClass]="isFormValid() ? 'disable-button' : 'update-button'"
+        [disabled]="isFormValid()"
+        (click)="onUpdate()"
+      >
+        Update
+      </button>
+    </div>
+  </div>
+</div>

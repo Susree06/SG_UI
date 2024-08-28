@@ -1,0 +1,36 @@
+<div class="dashboard-content">
+  <div class="dashboard-div">
+    <mat-icon class="arrow-icon" (click)="backToDashboard()"
+      >arrow_back</mat-icon
+    >
+    <mat-label class="back-text">Back to Dashboard</mat-label>
+  </div>
+  <br />
+  <div class="report-files-div">
+    <mat-label class="report-files-text">Report Files</mat-label>
+    <div class="search-report-div">
+      <div class="report-search-div" fxLayout="row">
+        <mat-icon class="search-icon">search</mat-icon>
+        <div class="report-search-input-div">
+          <mat-form-field class="search-text-field" floatlabel="never">
+            <input
+              placeholder="Search"
+              (input)="onSearch($event.target)"
+              matInput
+              autocomplete="off"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="generate-button-div">
+      <button mat-raised-button class="generate-button" (click)="reportsPage()">
+        + Generate Report
+      </button>
+    </div>
+  </div>
+  <hr class="hr-line" />
+  <div class="report-list-div">
+    <app-report-list [reportName]="this.reportName" [reportsList]="this.reportsList"></app-report-list>
+  </div>
+</div>

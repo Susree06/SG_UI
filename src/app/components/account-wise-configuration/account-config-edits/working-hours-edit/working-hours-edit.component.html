@@ -1,0 +1,39 @@
+<div class="working-hour-edit-dialog ">
+  <h1 mat-dialog-title > 
+    <span class="title"> 
+      {{ accountName | accountName }} {{  " | " + location }} 
+      <strong>{{currentYear}}</strong>
+    </span>
+    <mat-icon mat-dialog-close class="close-modal-icon float-end ml-4">close</mat-icon>
+  </h1>
+  <form autocomplete="off" [formGroup]="editWorkingHoursForm">
+    <div mat-dialog-content>
+      <mat-form-field class="form-field-container" appearance="outline">
+        <mat-label class="custom-mat-label">Hours</mat-label>
+        <input 
+          formControlName="hoursCtrl"
+          matInput
+          type="text"
+          maxlength="4"
+          [value]="workingHour"
+          (input)="onChange($event.target)"
+          decimalNumber
+          maxlength="4"
+        />  
+      </mat-form-field>
+      <mat-error  *ngIf="this.editWorkingHoursForm.controls['hoursCtrl'].hasError('max') || this.editWorkingHoursForm.controls['hoursCtrl'].invalid">
+        Please enter value between 0 to 12
+      </mat-error>
+    </div>
+    <div mat-dialog-actions class="justify-content-center" >
+      <button
+        mat-raised-button
+        [ngClass]="!dataUpdated ? 'disable-button' : 'update-button'"
+        [disabled]="!dataUpdated"
+        (click)="onUpdate()"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+</div>

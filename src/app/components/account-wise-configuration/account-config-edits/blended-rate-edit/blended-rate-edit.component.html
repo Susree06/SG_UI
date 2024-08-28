@@ -1,0 +1,74 @@
+<div class="manage-account-container" [formGroup]="manageAccountForm">
+  <div style="display: flex; justify-content: space-between; color:#254067;">
+    <h2>Manage Account</h2>
+    <mat-icon style="cursor: pointer; color:#254067" (click)="onClose()">close</mat-icon>
+  </div>
+  <br>
+  <div>
+    <h4 class="sub-heading">Type</h4>
+    <mat-radio-group formControlName="typeCtrl">
+      <mat-radio-button [value]="typeTitle" [checked]='true'> {{ typeTitle }} </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <br />
+  <div>
+    <h4 class="sub-heading">Account</h4>
+    <!-- <mat-form-field class="form-field" style="width: 400px;" appearance="outline"
+    *ngIf="manageAccountForm.get('typeCtrl')?.value !== 3">
+      <mat-select placeholder="Select" formControlName="accountCtrl">
+        <mat-option *ngFor="let item of accounts" [value]="item.id">
+          {{ item.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> -->
+    <mat-form-field class="text-form-field" appearance="outline">
+      <input matInput type="text" placeholder="Enter" maxlength="50" formControlName="accountName" readonly/>
+    </mat-form-field>
+  </div>
+  <br />
+  <div>
+    <h4 class="sub-heading">Project</h4>
+    <mat-form-field class="text-form-field" appearance="outline">
+      <input matInput type="text" placeholder="Enter" maxlength="50" formControlName="projectName" readonly/>
+    </mat-form-field>
+  </div>
+  <br>
+  <div>
+    <h4 class="sub-heading">Contract  Type</h4>
+    <mat-form-field class="text-form-field" appearance="outline">
+      <input matInput type="text" placeholder="Enter" maxlength="50" formControlName="contractType" readonly/>
+    </mat-form-field>
+  </div>
+  <br>
+  <div class="new-form-field">
+    <h4 style="padding-top: 10px;">{{rateTitle}}</h4>
+    <mat-form-field [ngClass] ="rateTitle == 'Onsite Blended Rate:' ? 'onsite-label' : 'offshore-label' " appearance="outline">
+      <input matInput type="text" placeholder="Enter" maxlength="5" formControlName="blendedRate" numbersOnly (keyup)="onBlendedRateChange($event)"/>
+    </mat-form-field>
+  </div>
+
+  <!-- <div class="new-form-field">
+    <h4 style="padding-top: 10px;">Offshore Blended Rate:</h4>
+    <mat-form-field style="width: 100px; padding-left: 10px;" appearance="outline">
+      <input matInput type="text" placeholder="Enter" maxlength="5" formControlName="offShore"/>
+    </mat-form-field>
+  </div> -->
+
+  <div class="new-form-field">
+    <h4 style="padding-top: 10px;">Probability in %: </h4>
+       <mat-form-field style="width: 154px; padding-left: 65px;" appearance="outline">
+         <input matInput type="number" min="0"
+         max="100" maxlength="3" formControlName="probabilityInPercentage" (keyup)="onProbabilityChange($event)" numbersOnly/>
+       </mat-form-field>
+   </div>
+   <mat-error *ngIf="this.manageAccountForm.get('probabilityInPercentage').hasError('max')">
+    Please enter value between 0 to 100
+   </mat-error>
+
+  <br>
+  <div [align]="'center'">
+    <button mat-raised-button [ngClass]="isFormValid() || isProbabilityBlank || isBlendedRateBlank?'disable-button':'apply-button'" [disabled]="isFormValid() || isProbabilityBlank || isBlendedRateBlank" (click)="onUpdate()">
+      Submit
+    </button>
+  </div>
+</div>

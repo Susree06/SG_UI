@@ -1,0 +1,95 @@
+.tooltip-container {
+  display: inline-block;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  margin-left: 10px;
+
+  .tooltip-icon {
+    width: 24px;
+    height: 24px;
+    display: absolute;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .tooltip-content {
+    visibility: hidden;
+    width: 300px;
+    background-color: #fff;
+    color: #333;
+    text-align: left;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 35px;
+    left: 50%; // Default alignment
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    &.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &.left-align {
+      left: auto;
+      right: 50%;
+      transform: translateX(50%);
+    }
+
+    .legend {
+      display: flex;
+      flex-direction: column;
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        //   margin: 5px 0;
+
+        .legend-color {
+          width: 12px;
+          height: 12px;
+          margin-right: 8px;
+          border-radius: 2px;
+          border: 1px solid #ccc;
+
+          &.not-approved {
+            background-color: grey;
+          }
+
+          &.approved {
+            background-color: green;
+          }
+
+          &.latest-approved {
+            //  background-color: rgb(0, 66, 14);
+            background-color: darkgreen;
+          }
+
+          &.updated {
+            background-color: blue;
+          }
+        }
+
+        span {
+          font-size: 14px;
+          color: #555;
+        }
+      }
+    }
+  }
+}

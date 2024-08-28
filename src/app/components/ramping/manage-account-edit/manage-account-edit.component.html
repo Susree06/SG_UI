@@ -1,0 +1,19 @@
+<div class="container-fluid ramp-up-dialog-container">
+  <div class="row pt-2">
+    <div class="col-sm-12 d-flex justify-content-between">
+      <h2 mat-dialog-title class="account-name">Modify <span class="">{{ accountName | accountName }} | {{ location }}</span>
+      <app-tool-tip></app-tool-tip>
+      </h2>
+      <mat-icon style="cursor: pointer" class="close-btn" (click)="onClose()">close</mat-icon>
+    </div>
+  </div>
+  <mat-tab-group class="tab-container" >           
+    <mat-tab label="Offshore" *ngIf="showOffshoreTab">
+      <app-manage-account-offshore-onsite [tabData]="offShoreData" [data]="data" dataLocation="Offshore"></app-manage-account-offshore-onsite>
+    </mat-tab>
+    <mat-tab label="Onsite" *ngIf="showOnSiteTab">
+      <app-manage-account-offshore-onsite [tabData]="onSiteData"  [data]="data" dataLocation="Onsite"></app-manage-account-offshore-onsite>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

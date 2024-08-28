@@ -1,0 +1,27 @@
+<div class="geolocation-dialog container-fluid ">
+  <h1 mat-dialog-title>
+    {{data.action}}
+    <mat-icon mat-dialog-close class="close-modal-icon float-end mt-3">close</mat-icon>
+  </h1>
+  <div mat-dialog-content>
+    <form #geoLocationForm="ngForm" novalidate>
+      <div class="row-sm-3">
+        <mat-form-field class="text-form-field" >
+          <mat-label>Geo-Location</mat-label>
+          <input matInput [(ngModel)]="newGeoLocationName" name="geoLocationName" #geoLocationName="ngModel" required
+          (focusout)="validateGeoLocation('geoLocationName')">
+        </mat-form-field>
+        <mat-form-field class="text-form-field">
+          <mat-label>Geo-Location Code</mat-label>
+          <input matInput [(ngModel)]="newGeoLocationCode" name="newGeoLocationCode">
+        </mat-form-field>
+      </div>
+      <mat-error *ngIf="(geoLocationName.invalid && (geoLocationName.dirty || geoLocationName.touched))">
+        <mat-error *ngIf="geoLocationName?.errors['duplicateGeoLocation']">Geo-Location already exists in record.</mat-error>
+      </mat-error>
+    </form>
+  </div>
+  <div mat-dialog-actions [align]="'center'">
+    <button  (click)="save()" class="addBtn" mat-raised-button cdkFocusInitial [hidden]="isEdit()">Save</button>
+    <button (click)="update()" class="addBtn" mat-raised-button cdkFocusInitial [hidden]="isAdd()">Update</button>
+  </div>

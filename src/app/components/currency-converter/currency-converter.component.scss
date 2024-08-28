@@ -1,0 +1,27 @@
+.currency-dialog {
+  .close-modal-icon {
+    background-color: #3ab54a;
+    color: white;
+    float: right;
+    border: 1px solid #3ab54a;
+    padding-bottom: 2px;
+  }
+
+  h3 {
+    background-color: #3ab54a;
+    color: white;
+    border: 1px solid #3ab54a;
+    font-size: 16px;
+    font-family: sans-serif;
+  }
+}
+
+@keyframes custom-dialog-enter {
+  from {
+    transform: scale(0) rotate(360deg);
+  }
+
+  to {
+    transform: none;
+  }
+}

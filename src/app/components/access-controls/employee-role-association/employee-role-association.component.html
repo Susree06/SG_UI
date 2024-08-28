@@ -1,0 +1,180 @@
+<div class="employee-role-association-container">
+  <div class="container">
+    <div class="row d-flex justify-content-center mb-5">
+      <div class="col-sm-11 mt-4 px-0">
+        <h1 class="employee-role-association-title">User Role Association</h1>
+      </div>
+      <div class="col-sm-11 employeeRole-container mt-3">
+        <div class="search-box mb-3">
+          <input
+            class="search-txt"
+            type="text"
+            name=""
+            id=""
+            (keyup)="applyFilter($event, 'init')"
+            placeholder="Enter User Name / Role"
+            matInput
+            #input
+          />
+          <a class="search-btn">
+            <img src="../../../assets/icons/search-icon.svg" alt="" />
+          </a>
+        </div>
+        <div class="row">
+          <div class="table-wrapper col-md-7 col-sm-7">
+            <table mat-table [dataSource]="dataSource" matSort>
+              <ng-container matColumnDef="UserName">
+                <th mat-header-cell *matHeaderCellDef>User Name</th>
+                <td mat-cell *matCellDef="let element">
+                  {{ element.userName | titlecase }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="Role">
+                <th mat-header-cell *matHeaderCellDef>Roles</th>
+                <td mat-cell *matCellDef="let element" class="table-header">
+                  {{ element.roleNames }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                  <button
+                    mat-icon-button
+                    (click)="openEditDialog(element)"
+                    matTooltip="Edit"
+                    matTooltipPosition="right"
+                    class="table-edit-button"
+                  >
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+              <tr
+                mat-header-row
+                *matHeaderRowDef="displayedColumns; sticky: true"
+              ></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell no-data-found" colspan="5">
+                  No data Found !
+                </td>
+              </tr>
+            </table>
+            <div class="paginator">
+              <mat-paginator
+                fixed
+                [pageSizeOptions]="[5, 10, 20, 50]"
+                showFirstLastButtons
+              >
+              </mat-paginator>
+            </div>
+          </div>
+          <div class="col-md-4 add-role-container">
+            <form
+              [formGroup]="employeeAddForm"
+              (ngSubmit)="addNewUser(formDirective)"
+              #formDirective="ngForm"
+            >
+              <div class="add-role-box">
+                <h2 class="add-role-title">Add New User</h2>
+                <div class="add-role-form">
+                  <mat-form-field class="col-4 mb-2" appearance="fill">
+                    <mat-label>UserName</mat-label>
+                    <mat-select
+                      formControlName="userName"
+                      #optsUserName
+                      (openedChange)="openChange($event)"
+                      (selectionChange)="onUserSelectionChange($event.value)"
+                    >
+                      <div class="checkbox-container">
+                        <app-search-input
+                          [searchCtrl]="searchCtrlUserName"
+                        ></app-search-input>
+                      </div>
+                      <mat-divider></mat-divider>
+                      <div class="options">
+                        <div
+                          *ngIf="
+                            searchCtrlUserName.value &&
+                            !optsUserName.options.length
+                          "
+                          class="no-data"
+                          disabled
+                        >
+                          No results found for "{{ searchCtrlUserName.value }}".
+                        </div>
+                        <cdk-virtual-scroll-viewport
+                          itemSize="50"
+                          class="example-viewport"
+                        >
+                          <mat-option
+                            *cdkVirtualFor="
+                              let item of filteredUserNameOptions | async;
+                              trackBy: trackByFn
+                            "
+                            [value]="item.userId"
+                          >
+                            {{ item.userName }}
+                          </mat-option>
+                        </cdk-virtual-scroll-viewport>
+                      </div>
+                    </mat-select>
+                    <mat-error
+                      *ngIf="
+                        employeeAddForm.get('userName')?.hasError('required')
+                      "
+                      >User Name is required</mat-error
+                    >
+                  </mat-form-field>
+                  <mat-form-field class="col-4 mb-2" appearance="fill">
+                    <mat-label>Roles</mat-label>
+                    <mat-select
+                      formControlName="roleIds"
+                      #optsRole
+                      multiple
+                      (openedChange)="searchCtrlRole.setValue('')"
+                    >
+                      <div class="checkbox-container">
+                        <app-search-input
+                          [searchCtrl]="searchCtrlRole"
+                        ></app-search-input>
+                      </div>
+                      <mat-divider></mat-divider>
+                      <div class="options">
+                        <div
+                          *ngIf="
+                            searchCtrlRole.value && !optsRole.options.length
+                          "
+                          class="no-data"
+                          disabled
+                        >
+                          No results found for "{{ searchCtrlRole.value }}".
+                        </div>
+                        <mat-option
+                          *ngFor="let item of filteredRoleOptions | async"
+                          [value]="item.roleId"
+                          (onSelectionChange)="onSelectionChange($event)"
+                        >
+                          {{ item.roleName }}
+                        </mat-option>
+                      </div>
+                    </mat-select>
+                    <mat-error
+                      *ngIf="
+                        employeeAddForm.get('roleIds')?.hasError('required')
+                      "
+                      >Role is required</mat-error
+                    >
+                  </mat-form-field>
+                  <button mat-raised-button color="primary" type="submit">
+                    Add
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

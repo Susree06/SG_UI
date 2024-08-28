@@ -1,0 +1,55 @@
+<div class="row employee-role-association-container mt-3 mb-4">
+  <div class="col-sm-12">
+    <div class="search-box mb-1">
+      <input class="search-txt" type="text" name="" id="" (keyup)="applyFilter($event,'init')"
+        placeholder="Enter Account Name" matInput #input>
+      <a class="search-btn">
+        <img src="../../../assets/icons/search-icon.svg" alt="">
+      </a>
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <div class="table-wrapper">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="Accounts">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Accounts</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.accountName | accountName }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="Ig">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> IG </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.igName }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="Geo-Location">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Geo-Location </th>
+          <td mat-cell *matCellDef="let element" class="table-header">
+            {{element.geoLocation}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button matTooltip="Edit" (click)="addEditConfig(element)" matTooltipPosition="right"
+              class="table-edit-button">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+        <tr class="mat-row " *matNoDataRow>
+          <td class="mat-cell no-data-found" [attr.colspan]="displayedColumns.length + 1">No data Found !</td>
+        </tr> 
+      </table>
+      <div class="paginator">
+        <mat-paginator fixed [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons>
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

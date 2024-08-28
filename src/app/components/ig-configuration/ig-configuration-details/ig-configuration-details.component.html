@@ -1,0 +1,45 @@
+<div class="ig-configuration-dialog container-fluid ">
+  <h1 mat-dialog-title>
+    {{data.action}}
+    <mat-icon mat-dialog-close class="close-modal-icon float-end mt-3">close</mat-icon>
+  </h1>
+  <div mat-dialog-content>
+    <div class="row-sm-3">
+      <form #igConfigurationForm="ngForm" novalidate>
+        <mat-form-field class="text-form-field" [hidden]="isEdit()">
+          <mat-label>IG</mat-label>
+          <input matInput [(ngModel)]="newIgName" name="newgName" #newgName="ngModel" required
+            (focusout)="validateIg('newgName')">
+        </mat-form-field>
+        <mat-form-field class="text-form-field" [hidden]="isAdd()">
+          <mat-label>IG</mat-label>
+          <mat-select [(ngModel)]="selectedIg" name="igName" [disabled]="isEdit()">
+            <mat-option *ngFor="let item of igList" [value]="item.igId">
+              {{item.igName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> 
+        <mat-form-field class="text-form-field">
+          <mat-label>IG Code</mat-label>
+          <input matInput [(ngModel)]="newIgCode" name="newIgCode">
+        </mat-form-field> 
+        <mat-form-field class="text-form-field">
+          <mat-label>Ig Head</mat-label>
+          <mat-select [(ngModel)]="selectedIgHead" name="igHead" #igHead="ngModel" required>
+            <mat-option *ngFor="let item of igHeadList" [value]="item.userId">
+              {{item.userName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </div>
+    <mat-error *ngIf="(newgName.invalid && (newgName.dirty || newgName.touched))">
+      <mat-error *ngIf="newgName?.errors['duplicateIg']">IG name already exists in record.</mat-error>
+    </mat-error>
+  </div>
+  <div mat-dialog-actions [align]="'center'">
+    <button mat-raised-button (click)="save()" class="addBtn" mat-button [hidden]="isEdit()"
+      [disabled]="igConfigurationForm.form.invalid">Save</button>
+    <button mat-raised-button (click)="update()" class="addBtn" mat-button [hidden]="isAdd()">Update</button>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="example-container">
+    <mat-table [dataSource]="checkDataSource()">
+        <ng-container matColumnDef="Date" class="mat-column">
+          <mat-header-cell  *matHeaderCellDef> Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.holidayDate | date:'mediumDate'}} 
+              <div class="day-text">{{element.holidayDay}}</div></mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="Holiday">
+          <mat-header-cell *matHeaderCellDef> Holiday </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.holidayName}} </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>
+  

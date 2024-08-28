@@ -1,0 +1,161 @@
+.example-card {
+  width: 350px;
+  height: 350px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  margin-top: 80px;
+}
+
+.example-header-image {
+  top: 144px;
+  left: 527px;
+  width: 111px;
+  height: 40px;
+  opacity: 1;
+}
+
+.email-div {
+  margin-top: 30px;
+  margin-left: 55px;
+}
+
+.password-div {
+  margin-left: 8px;
+  margin-left: 10px;
+}
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.sign-button {
+  border-radius: 4px;
+  text-align: right;
+  font: normal normal bold 14px/21px Roboto;
+  letter-spacing: 0px;
+  color: #fff !important;
+  background: #2c953a !important;
+}
+
+.login-card {
+  display: flex;
+  justify-content: center;
+}
+
+.sign-in-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 28px;
+  letter-spacing: 0px;
+  color: #272b30;
+  margin-left: 50px;
+  margin-top: 10px;
+  font-weight: 500;
+  margin-left: 70px;
+  margin-top: 60px;
+}
+
+.signIn-button-div {
+  position: relative;
+  top: 38px;
+  left: 90px;
+}
+
+.remember-section {
+  margin-left: -10px;
+}
+
+.title-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0px;
+  color: #272b30;
+  margin-left: 35px;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.header-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.section-1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
+  .mat-form-field-outline-thick {
+  height: 40px;
+  width: 312px;
+}
+.mat-mdc-form-field {
+  display: inline;
+}
+
+.forgot-text {
+  text-decoration: none;
+  margin-left: 78px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0px;
+  color: #272b30;
+  font-weight: 400;
+}
+
+::ng-deep .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__background,
+.mdc-checkbox__ripple {
+  background-color: green !important;
+  border-color: green !important;
+  --mat-option-selected-state-label-text-color: #ff4081 !important;
+}
+
+// ::ng-deep .mat-checkbox {
+//   .mat-checkbox-ripple .mat-ripple-element {
+//       background-color: #07abe9 !important;
+//   }
+//   .mat-checkbox-frame {
+//       border-color: #07abe9 !important;
+//   }
+// }
+::ng-deep .email-field .mat-mdc-text-field-wrapper {
+  width: 312px !important;
+  height: 40px !important;
+}
+
+::ng-deep .password-field .mat-mdc-text-field-wrapper {
+  width: 312px !important;
+  height: 40px !important;
+}
+
+::ng-deep
+  .mat-mdc-text-field-wrapper.mdc-text-field--outlined
+  .mat-mdc-form-field-infix {
+  padding-top: 9px;
+}
+.hide-icon {
+  margin-top: -15px;
+}
+::ng-deep {
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+  }
+  mat-form-field {
+    .mat-hint,
+    input,
+    ::placeholder,
+    .mat-form-field-label {
+      color: white;
+    }
+  }
+}

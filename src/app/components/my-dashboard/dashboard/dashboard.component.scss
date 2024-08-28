@@ -1,0 +1,95 @@
+.dashboard-header-section {
+  display: flex;
+  flex-direction: row;
+  margin-top: 56px;
+}
+
+.dashboard-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  letter-spacing: 0px;
+  color: #272b30;
+  font-weight: 500;
+  margin-left: 80px;
+}
+
+.sign-button {
+  position: absolute;
+  right: 80px;
+  top: 113px;
+  border-radius: 4px;
+  text-align: right;
+  letter-spacing: 0px;
+  color: #fff !important;
+  background: #2c953a !important;
+}
+
+.report-files-card {
+  height: 181px;
+  width: 374px;
+  border-radius: 6px;
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+.report-files-div {
+  margin-left: 80px;
+  margin-top: 30px;
+}
+
+.view-btn-div {
+  position: relative;
+  top: 45px;
+  left: 9px;
+}
+
+.view-button {
+  position: relative;
+  right: 144px;
+  border-radius: 4px;
+  text-align: right;
+  letter-spacing: 0px;
+  color: #fff !important;
+  background: #2c953a !important;
+  margin-left: 150px;
+  margin-top: -40px;
+}
+
+.reports-count-text {
+  position: relative;
+  left: 76px;
+  top: 12px;
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+  letter-spacing: 0px;
+  color: #272b30;
+  font-weight: 500;
+  text-align: left;
+  opacity: 1;
+}
+
+.folder-icon-image {
+  background-image: url("../../../../assets/image/folder-icon.png");
+  background-size: cover;
+  height: 32px;
+  width: 32px;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+.report-file-text {
+  margin-top: 12px;
+}
+.subtitle-text {
+  margin-top: 21px;
+  margin-left: -46px;
+}
+
+.account-config{
+  position: absolute;
+  right: 80px;
+  top: 530px;
+  border-radius: 4px;
+  text-align: right;
+  letter-spacing: 0px;
+  color: #fff !important;
+  background: #2c953a !important;  
+}

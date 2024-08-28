@@ -1,0 +1,363 @@
+<!-- <div class="filter-text">
+  <mat-icon class="filter-icon" (click)="onFilter()">filter_alt</mat-icon>
+<span class="filter">Filter</span>
+</div>
+<br/> -->
+
+<div class="table-format">
+<section class="example-container mat-elevation-z8" tabindex="0">
+    <table mat-table [dataSource]="getDataSource()" class="mat-elevation-z8">
+      <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="Accounts" sticky>
+        <th mat-header-cell *matHeaderCellDef>Accounts</th>
+        <td mat-cell *matCellDef="let element">{{ element.accountName}}</td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="Location" sticky>
+        <th mat-header-cell *matHeaderCellDef>Location</th>
+        <td mat-cell *matCellDef="let element">{{ element.location }}</td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <!-- <ng-container matColumnDef="Average">
+        <th mat-header-cell *matHeaderCellDef>Average</th>
+        <td mat-cell *matCellDef="let element">{{ element.Average }}</td>
+      </ng-container> -->
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="janPYcount1">
+        <th mat-header-cell *matHeaderCellDef>Jan Headcount</th>
+        <td mat-cell *matCellDef="let element">{{ element.janHeadCount }}</td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="janPYrev1">
+        <th mat-header-cell *matHeaderCellDef>Jan Revenue</th>
+        <td mat-cell *matCellDef="let element">{{ element.janRevenue }}</td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="febPYcount2">
+        <th mat-header-cell *matHeaderCellDef>Feb Headcount</th>
+        <td mat-cell *matCellDef="let element">{{ element.febHeadCount }}</td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="febPYrev2">
+        <th mat-header-cell *matHeaderCellDef>Feb Revenue</th>
+        <td mat-cell *matCellDef="let element">{{ element.febRevenue }}</td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="marPYcount3">
+        <th mat-header-cell *matHeaderCellDef>Mar Headcount</th>
+        <td mat-cell *matCellDef="let element">{{ element.marHeadCount }}</td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="marPYrev3">
+        <th mat-header-cell *matHeaderCellDef>Mar Revenue</th>
+        <td mat-cell *matCellDef="let element">{{ element.marRevenue }}</td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="aprCYcount4">
+        <th mat-header-cell *matHeaderCellDef>Apr Headcount</th>
+        <td mat-cell *matCellDef="let element">{{ element.aprHeadCount }}</td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="aprCYrev4">
+        <th mat-header-cell *matHeaderCellDef>Apr Revenue</th>
+        <td mat-cell *matCellDef="let element">{{ element.aprRevenue }}</td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="mayCYcount5">
+        <th mat-header-cell *matHeaderCellDef>May Headcount</th>
+        <td mat-cell *matCellDef="let element">{{ element.mayHeadCount }}</td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="mayCYrev5">
+        <th mat-header-cell *matHeaderCellDef>May Revenue</th>
+        <td mat-cell *matCellDef="let element">{{ element.mayRevenue }}</td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="junCYcount6">
+        <th mat-header-cell *matHeaderCellDef>Jun Headcount</th>
+        <td mat-cell *matCellDef="let element">{{ element.junHeadCount }}</td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="junCYrev6">
+        <th mat-header-cell *matHeaderCellDef>Jun Revenue</th>
+        <td mat-cell *matCellDef="let element">{{ element.junRevenue }}</td>
+      </ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="julCYcount7">
+  <th mat-header-cell *matHeaderCellDef>Jul Headcount</th>
+  <td mat-cell *matCellDef="let element">{{ element.julHeadCount }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="julCYrev7">
+  <th mat-header-cell *matHeaderCellDef>Jul Revenue</th>
+  <td mat-cell *matCellDef="let element">{{ element.julRevenue }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="augCYcount8">
+  <th mat-header-cell *matHeaderCellDef>Aug Headcount</th>
+  <td mat-cell *matCellDef="let element">{{ element.augHeadCount }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="augCYrev8">
+  <th mat-header-cell *matHeaderCellDef>Aug Revenue</th>
+  <td mat-cell *matCellDef="let element">{{ element.augRevenue }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="sepCYcount9">
+  <th mat-header-cell *matHeaderCellDef>Sep Headcount</th>
+  <td mat-cell *matCellDef="let element">{{ element.sepHeadCount }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="sepCYrev9">
+  <th mat-header-cell *matHeaderCellDef>Sep Revenue</th>
+  <td mat-cell *matCellDef="let element">{{ element.sepRevenue }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="octCYcount10">
+  <th mat-header-cell *matHeaderCellDef>Oct Headcount</th>
+  <td mat-cell *matCellDef="let element">{{ element.octHeadCount }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="octCYrev10">
+  <th mat-header-cell *matHeaderCellDef>Oct Revenue</th>
+  <td mat-cell *matCellDef="let element">{{ element.octRevenue }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="novCYcount11">
+  <th mat-header-cell *matHeaderCellDef>Nov Headcount</th>
+  <td mat-cell *matCellDef="let element">{{ element.novHeadCount }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="novCYrev11">
+  <th mat-header-cell *matHeaderCellDef>Nov Revenue</th>
+  <td mat-cell *matCellDef="let element">{{ element.novRevenue }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="decCYcount12">
+  <th mat-header-cell *matHeaderCellDef>Dec Headcount</th>
+  <td mat-cell *matCellDef="let element">{{ element.decHeadCount }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="decCYrev12">
+  <th mat-header-cell *matHeaderCellDef>Dec Revenue</th>
+  <td mat-cell *matCellDef="let element">{{ element.decRevenue }}</td>
+</ng-container>
+
+   <!-- Header row first group -->
+  <ng-container matColumnDef="header-row-first-group">
+    <th mat-header-cell *matHeaderCellDef 
+        [attr.colspan]="26"> 
+      Previous Year
+    </th>
+  </ng-container>
+  
+  <!-- Header row second group -->
+  <ng-container matColumnDef="header-row-second-group">
+    <th mat-header-cell *matHeaderCellDef [attr.colspan]="26"></th>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="['header-row-first-group', 'header-row-second-group']"></tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+ </section>
+  
+&nbsp;
+
+ <section class="example-container mat-elevation-z8" tabindex="0">
+  <table mat-table [dataSource]="tableSecond" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="janPYcount">
+      <th mat-header-cell *matHeaderCellDef>Jan Headcount</th>
+      <td mat-cell *matCellDef="let element">{{ element.janHeadCount }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="janPYrev">
+      <th mat-header-cell *matHeaderCellDef>Jan Revenue</th>
+      <td mat-cell *matCellDef="let element">{{ element.janRevenue }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="febPYcount">
+      <th mat-header-cell *matHeaderCellDef>Feb Headcount</th>
+      <td mat-cell *matCellDef="let element">{{ element.febHeadCount }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="febPYrev">
+      <th mat-header-cell *matHeaderCellDef>Feb Revenue</th>
+      <td mat-cell *matCellDef="let element">{{ element.febRevenue }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="marPYcount">
+      <th mat-header-cell *matHeaderCellDef>Mar Headcount</th>
+      <td mat-cell *matCellDef="let element">{{ element.marHeadCount }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="marPYrev">
+      <th mat-header-cell *matHeaderCellDef>Mar Revenue</th>
+      <td mat-cell *matCellDef="let element">{{ element.marRevenue }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="aprCYcount">
+      <th mat-header-cell *matHeaderCellDef>Apr Headcount</th>
+      <td mat-cell *matCellDef="let element">{{ element.aprHeadCount }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="aprCYrev">
+      <th mat-header-cell *matHeaderCellDef>Apr Revenue</th>
+      <td mat-cell *matCellDef="let element">{{ element.aprRevenue }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="mayCYcount">
+      <th mat-header-cell *matHeaderCellDef>May Headcount</th>
+      <td mat-cell *matCellDef="let element">{{ element.mayHeadCount }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="mayCYrev">
+      <th mat-header-cell *matHeaderCellDef>May Revenue</th>
+      <td mat-cell *matCellDef="let element">{{ element.mayRevenue }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="junCYcount">
+      <th mat-header-cell *matHeaderCellDef>Jun Headcount</th>
+      <td mat-cell *matCellDef="let element">{{ element.junHeadCount }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="junCYrev">
+      <th mat-header-cell *matHeaderCellDef>Jun Revenue</th>
+      <td mat-cell *matCellDef="let element">{{ element.junRevenue }}</td>
+    </ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="julCYcount">
+<th mat-header-cell *matHeaderCellDef>Jul Headcount</th>
+<td mat-cell *matCellDef="let element">{{ element.julHeadCount }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="julCYrev">
+<th mat-header-cell *matHeaderCellDef>Jul Revenue</th>
+<td mat-cell *matCellDef="let element">{{ element.julRevenue }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="augCYcount">
+<th mat-header-cell *matHeaderCellDef>Aug Headcount</th>
+<td mat-cell *matCellDef="let element">{{ element.augHeadCount }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="augCYrev">
+<th mat-header-cell *matHeaderCellDef>Aug Revenue</th>
+<td mat-cell *matCellDef="let element">{{ element.augRevenue }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="sepCYcount">
+<th mat-header-cell *matHeaderCellDef>Sep Headcount</th>
+<td mat-cell *matCellDef="let element">{{ element.sepHeadCount }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="sepCYrev">
+<th mat-header-cell *matHeaderCellDef>Sep Revenue</th>
+<td mat-cell *matCellDef="let element">{{ element.sepRevenue }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="octCYcount">
+<th mat-header-cell *matHeaderCellDef>Oct Headcount</th>
+<td mat-cell *matCellDef="let element">{{ element.octHeadCount }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="octCYrev">
+<th mat-header-cell *matHeaderCellDef>Oct Revenue</th>
+<td mat-cell *matCellDef="let element">{{ element.octRevenue }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="novCYcount">
+<th mat-header-cell *matHeaderCellDef>Nov Headcount</th>
+<td mat-cell *matCellDef="let element">{{ element.novHeadCount }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="novCYrev">
+<th mat-header-cell *matHeaderCellDef>Nov Revenue</th>
+<td mat-cell *matCellDef="let element">{{ element.novRevenue }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="decCYcount">
+<th mat-header-cell *matHeaderCellDef>Dec Headcount</th>
+<td mat-cell *matCellDef="let element">{{ element.decHeadCount }}</td>
+</ng-container>
+
+<!-- Symbol Column -->
+<ng-container matColumnDef="decCYrev">
+<th mat-header-cell *matHeaderCellDef>Dec Revenue</th>
+<td mat-cell *matCellDef="let element">{{ element.decRevenue }}</td>
+</ng-container>
+
+ <!-- Header row first group -->
+<ng-container matColumnDef="header-row-first-group">
+  <th mat-header-cell *matHeaderCellDef 
+      [attr.colspan]="14"> 
+      Current Year
+  </th>
+</ng-container>
+
+<!-- Header row second group -->
+<ng-container matColumnDef="header-row-second-group">
+  <th mat-header-cell *matHeaderCellDef [attr.colspan]="14"></th>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="['header-row-first-group', 'header-row-second-group']"></tr>
+<tr mat-header-row *matHeaderRowDef="secondDisplayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: secondDisplayedColumns;"></tr>
+</table>
+</section>
+</div>

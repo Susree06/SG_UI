@@ -1,0 +1,27 @@
+<div class="dashboard-div">
+  <div class="dashboard-header-section">
+    <label class="dashboard-text">My Dashboard</label>
+    <button mat-raised-button class="sign-button" (click)="reportsPage()">
+      + Generate Report
+    </button>
+  </div>
+
+  <div class="report-files-div">
+    <mat-card class="report-files-card">
+      <mat-card-header>
+        <div mat-card-avatar class="folder-icon-image"></div>
+        <mat-card-title class="report-file-text"> Report Files </mat-card-title>
+        <mat-card-subtitle class="subtitle-text">List of all saved report files</mat-card-subtitle>
+        <label class="reports-count-text"> 7 </label>
+      </mat-card-header>
+
+      <div class="view-btn-div">
+        <mat-card-actions>
+          <button mat-raised-button class="view-button" (click)="viewDetails()">
+            View Details
+          </button>
+        </mat-card-actions>
+      </div>
+    </mat-card>
+  </div>
+</div>

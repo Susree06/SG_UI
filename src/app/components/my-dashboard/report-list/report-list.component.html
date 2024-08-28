@@ -1,0 +1,20 @@
+<div class="report-lists-content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div
+        fxFlex="20%"
+        fxFlex.xs="100%"
+        fxFlex.sm="33%"
+        *ngFor="let num of reports"
+      >
+        <mat-card class="report-cards" (click)="accConfig()">
+          <div class="report-title-div">
+            <div class="folder-icon-div">
+              <mat-icon class="folder-icon">folder_open</mat-icon>
+            </div>
+              <mat-card-title class="report-title"> {{ num }}</mat-card-title>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,13 @@
+<span *ngIf = "isUserInfoLoaded">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 px-0">
+      <!-- <app-header></app-header> -->
+      <app-login *ngIf="router.url === '/login'"></app-login>
+      <app-header *ngIf="router.url !== '/login'"></app-header>
+      <app-loader></app-loader>
+      <!-- <app-footer class="fixed-bottom" *ngIf="router.url !== '/login'"></app-footer> -->
+    </div>
+  </div>
+</div>
+</span>

@@ -1,0 +1,59 @@
+<div class="geo-location-container container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="geo-location-title">Geo-Location</h1>
+    </div>
+    <div class="col-sm-12 mt-3">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="search-box mb-3">
+            <input class="search-txt" type="text" name="" id="" (keyup)="applyFilter($event,'init')"
+            placeholder="Enter Geo-Location Name" matInput #input>
+          <a class="search-btn">
+            <img src="../../../assets/icons/search-icon.svg" alt="">
+          </a>
+          </div>
+        </div>
+          <div class="col-sm-6 d-flex justify-content-end" *ngIf="isAdmin">
+            <button mat-raised-button class="addBtn" (click)="addEditConfig()">Add New</button>
+          </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="table-wrapper">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="locationName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Geo-Location</th>
+            <td mat-cell *matCellDef="let element">
+              {{element.locationName}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="locationCode">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Geo-Location Code</th>
+            <td mat-cell *matCellDef="let element">
+              {{element.locationCode}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button matTooltip="Edit" (click)="addEditConfig(element)" matTooltipPosition="right"
+                class="table-edit-button">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr class="mat-row " *matNoDataRow>
+            <td class="mat-cell no-data-found"  colspan="5">No data Found !</td>
+          </tr>
+        </table>
+        <div class="paginator">
+          <mat-paginator fixed [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons>
+          </mat-paginator>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

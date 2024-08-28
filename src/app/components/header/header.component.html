@@ -1,0 +1,335 @@
+<mat-toolbar class="bg-nav">
+  <mat-toolbar-row>
+    <span class="title-icon" (click)="opened = !opened">
+      <img src="../../../assets/icons/nav_menu_icon.svg" />
+    </span>
+    <div class="logo" routerLink="/landing-page">
+      <img src="../../assets/image/HM_logo.png" class="logo-img" />
+      <div class="sales-guidance-text-div">
+        <span class="example-spacer"> Sales Guidance</span>
+      </div>
+    </div>
+    <div>
+      <img
+        [src]="userProfilePic"
+        [matMenuTriggerFor]="beforeMenu"
+        class="profile-icon"
+        #menuTrigger1="matMenuTrigger"
+      />
+    </div>
+    <mat-menu class="profile-info" #beforeMenu="matMenu">
+      <div class="text user-info-box">
+        <img [src]="userProfilePic" class="profile-icon1" />
+        <div class="user-info">
+          <span class="text1">{{ userProfile?.displayName }}</span>
+          <span class="email-text">{{ userProfile?.userPrincipalName }}</span>
+          <span class="jobTitle">{{ userProfile?.jobTitle }}</span>
+          <span class="jobTitle">{{ roleNamesString! }}</span>
+        </div>
+        <ul class="user-info-submenu">
+          <li (click)="goToLoginPage()" style="cursor: pointer">
+            <mat-icon class="logout-icon">logout</mat-icon>
+            <span class="logout-text">Logout</span>
+          </li>
+        </ul>
+      </div>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav [opened]="opened" mode="side" class="sidenav" #sidenav>
+    <mat-list class="pt-4">
+      <mat-expansion-panel [class.mat-elevation-z0]="true" *ngIf="accountConfigurationPanel">
+        <mat-expansion-panel-header>
+          Accounts Configuration
+        </mat-expansion-panel-header>
+        <mat-nav-list (click)="sidenav.toggle()">
+          <mat-list-item 
+          *ngIf="accountConfiguration"
+            class="sidenav-menus-list"
+            routerLink="/account-config"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="Accounts Configuration"
+              matTooltipPosition="right"
+            >
+              <img
+                src="../../../../../assets/icons/user-mangments.svg"
+                class="pr-3"
+              />
+              Accounts Configuration</a
+            >
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel [class.mat-elevation-z0]="true" *ngIf="revenueProjectionPanel">
+        <mat-expansion-panel-header>
+       Revenue Projection
+        </mat-expansion-panel-header>
+        <mat-nav-list (click)="sidenav.toggle()">
+          <mat-list-item
+          *ngIf="TMAccounts"
+            class="sidenav-menus-list"
+            routerLink="/manage-account"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="T&M Accounts"
+              matTooltipPosition="right"
+            >
+              <img src="../../../../../assets/icons/T&M.svg" class="pr-3" />
+              &nbsp;T&M Accounts
+            </a>
+          </mat-list-item>
+          <mat-list-item
+          *ngIf="FPAccounts"
+            class="sidenav-menus-list"
+            routerLink="/fixed-price-account"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="Fixed Price Accounts"
+              matTooltipPosition="right"
+            >
+              <img src="../../../../../assets/icons/FR.svg" class="pr-3" />
+              &nbsp;FP Accounts</a
+            >
+          </mat-list-item>
+          <mat-list-item
+          *ngIf="FMBAccounts"
+            class="sidenav-menus-list"
+            routerLink="/fixed-monthly-account"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="Fixed Monthly Billing Accounts"
+              matTooltipPosition="right"
+            >
+              <img src="../../../../../assets/icons/FM.svg" class="pr-3" />
+              &nbsp;FMB Accounts</a
+            >
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [class.mat-elevation-z0]="true" *ngIf="dashboardPanel">
+        <mat-expansion-panel-header>
+          Sales & Dashboard
+        </mat-expansion-panel-header>
+        <mat-nav-list (click)="sidenav.toggle()">
+          <mat-list-item class="sidenav-menus-list" routerLink="/sales-report" *ngIf="salesReports">
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="Sales Report"
+              matTooltipPosition="right"
+            >
+              <img
+                src="../../../../../assets/icons/sales-report.svg"
+                class="pr-3"
+              />
+              &nbsp;Sales Reports</a
+            >
+          </mat-list-item>
+          <mat-list-item class="sidenav-menus-list" routerLink="/work-flow" *ngIf="workFlowDashboard">
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="Work Flow Dashboard"
+              matTooltipPosition="right"
+            >
+              <img
+                src="../../../../../assets/icons/workflow.svg"
+                class="pr-3"
+              />
+              &nbsp;Work Flow Dashboard</a
+            >
+          </mat-list-item>
+          <mat-list-item
+          *ngIf="generateRevenue"
+            class="sidenav-menus-list"
+            routerLink="/generate-revenue"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="Generate Revenue"
+              matTooltipPosition="right"
+            >
+              <img src="../../../../../assets/icons/revenue.svg" class="pr-3" />
+              &nbsp;Generate Revenue</a
+            >
+          </mat-list-item>
+          <mat-list-item
+          *ngIf="projectReport"
+            class="sidenav-menus-list"
+            routerLink="/project-report"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="Project Report"
+              matTooltipPosition="right"
+            >
+              <img src="../../../../../assets/icons/revenue.svg" class="pr-3" />
+              &nbsp;Project Report</a
+            >
+          </mat-list-item>
+          <mat-list-item
+          *ngIf="accountHeadCountReport"
+            class="sidenav-menus-list"
+            routerLink="/headcount-report"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="HeadCount Report"
+              matTooltipPosition="right"
+            >
+              <img src="../../../../../assets/icons/revenue.svg" class="pr-3" />
+              &nbsp;HeadCount Report</a
+            >
+          </mat-list-item>
+          <mat-list-item
+          *ngIf="accountIGReport"
+            class="sidenav-menus-list"
+            routerLink="/ig-report"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="IG Report"
+              matTooltipPosition="right"
+            >
+              <img src="../../../../../assets/icons/revenue.svg" class="pr-3" />
+              &nbsp;IG Report</a
+            >
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [class.mat-elevation-z0]="true" *ngIf="accessManagementPanel">
+        <mat-expansion-panel-header>
+          Access Management
+        </mat-expansion-panel-header>
+        <mat-nav-list (click)="sidenav.toggle()">
+          <mat-list-item
+          *ngIf="userRoleAssociation"
+            class="sidenav-menus-list"
+            routerLink="/employee-role-association"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="User Role Association"
+              matTooltipPosition="right"
+            >
+              <img
+                src="../../../../../assets/icons/employee-role-association.svg"
+                class="pr-3"
+              />
+              &nbsp;User Role Association</a
+            >
+          </mat-list-item>
+          <mat-list-item
+          *ngIf="userAccessManagement"
+            class="sidenav-menus-list"
+            routerLink="/role-access-management"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="Role Access Management"
+              matTooltipPosition="right"
+            >
+              <img
+                src="../../../../../assets/icons/role-access-management.svg"
+                class="pr-3"
+              />
+              &nbsp;Role Access Management</a
+            >
+          </mat-list-item>
+          <mat-list-item
+          *ngIf="userAccountAssociation"
+            class="sidenav-menus-list"
+            routerLink="/userConfig"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="User Configuration"
+              matTooltipPosition="right"
+            >
+              <img
+                src="../../../../../assets/icons/user-configuration.svg"
+                class="pr-3"
+              />
+              &nbsp;User Account Association</a
+            >
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [class.mat-elevation-z0]="true" *ngIf="settingsPanel">
+        <mat-expansion-panel-header> Settings </mat-expansion-panel-header>
+        <mat-nav-list (click)="sidenav.toggle()">
+          <mat-list-item
+            class="sidenav-menus-list"
+            *ngIf="fileUploadStatus"
+            routerLink="/fileUpload"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="File Upload Status"
+              matTooltipPosition="right"
+            >
+              <img
+                src="../../../../../assets/icons/file-upload.svg"
+                class="pr-3"
+              />
+              &nbsp;File Upload Status</a
+            >
+          </mat-list-item>
+          <mat-list-item
+            class="sidenav-menus-list"
+            *ngIf="conversionRate"
+            routerLink="/conversion-rate"
+          >
+            <a
+              routerLinkActive="active"
+              class="sidenav-menus"
+              matTooltip="Conversion Rate"
+              matTooltipPosition="right"
+            >
+              <img
+                src="../../../../../assets/icons/conversion_rate.svg"
+                class="pr-3"
+              />
+              &nbsp;Conversion Rate</a
+            >
+          </mat-list-item>
+          <mat-list-item class="sidenav-menus-list" *ngIf="igConfiguration" routerLink="/ig-configuration">
+            <a  routerLinkActive="active" class="sidenav-menus"matTooltip="Ig Configuration" matTooltipPosition="right">
+              <img src="../../../../../assets/icons/igConfiguration.svg" class="pr-3" />
+              &nbsp;IG Configuration</a>
+          </mat-list-item>
+          <mat-list-item class="sidenav-menus-list" *ngIf="geoLocation" routerLink="/geoLocation">
+            <a  routerLinkActive="active" class="sidenav-menus"matTooltip="Geo-Location" matTooltipPosition="right">
+              <img src="../../../../../assets/icons/geoLocation.svg" class="pr-3" />
+              &nbsp;Geo-Location</a>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <app-currency-converter-bot></app-currency-converter-bot>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

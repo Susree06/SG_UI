@@ -1,0 +1,86 @@
+<div class="acc-config-container container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="acc-config-title">Manage Account Users</h1>
+    </div>
+    <div class="col-sm-12 mt-3">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="search-box mb-3">
+            <input
+              class="search-txt"
+              type="text"
+              name=""
+              id=""
+              (keyup)="applyFilter($event, 'init')"
+              placeholder="Enter Account Name "
+              matInput
+              #input
+            />
+            <a class="search-btn">
+              <img src="../../../assets/icons/search-icon.svg" alt="" />
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 d-flex justify-content-end">
+          <button
+            mat-raised-button
+            (click)="viewAccDetails()"
+            class="configure-account-button"
+          >
+            Configure Account Users
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="table-wrapper">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="Accounts" class="mat-column">
+            <mat-header-cell *matHeaderCellDef> Accounts </mat-header-cell>
+            <mat-cell class="mat-cell-acc" *matCellDef="let element">
+              {{ element.accounts | accountName }}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="DM">
+            <mat-header-cell *matHeaderCellDef> DM </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.dm }}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="BDM">
+            <mat-header-cell *matHeaderCellDef>
+              BDM /Account Manager
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              {{ element.bdm }}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Action">
+            <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-icon style="color: #53b750" (click)="viewAccDetails(element)"
+                >edit</mat-icon
+              >
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          <tr class="mat-row " *matNoDataRow>
+            <td class="mat-cell no-data-found"  colspan="5">No data Found !</td>
+          </tr>
+        </table>
+        <div class="paginator">
+          <mat-paginator
+            #paginator
+            fixed
+            [pageSizeOptions]="[5, 10, 20, 50]"
+            showFirstLastButtons
+          >
+          </mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

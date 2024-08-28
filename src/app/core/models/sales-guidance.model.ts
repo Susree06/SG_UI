@@ -1,0 +1,30 @@
+export class SalesGuidanceDto
+{
+    AccountId! : number;
+    Location! : string;
+    Year! : number;
+    JanHeadCount! : number;
+    JanRevenue! : number;
+    FebHeadCount! : number; 
+    FebRevenue! : number; 
+    MarHeadCount! : number; 
+    MarRevenue! : number; 
+    AprHeadCount! : number; 
+    AprRevenue! : number; 
+    MayHeadCount! : number; 
+    MayRevenue! : number; 
+    JunHeadCount! : number; 
+    JunRevenue! : number; 
+    JulHeadCount! : number; 
+    JulRevenue! : number; 
+    AugHeadCount! : number; 
+    AugRevenue! : number; 
+    SepHeadCount! : number; 
+    SepRevenue! : number; 
+    OctHeadCount! : number; 
+    OctRevenue! : number; 
+    NovHeadCount! : number; 
+    NovRevenue! : number; 
+    DecHeadCount! : number; 
+    DecRevenue! : number;
+}

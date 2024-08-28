@@ -1,0 +1,43 @@
+.manage-account-container {
+    margin: 5% 5% 0 5%;
+}
+
+.mat-mdc-radio-button.mdc-form-field{
+    font-size: 12px;
+}
+
+.text-form-field{
+    width: 400px;
+    height: 50px;
+    opacity: 0.5;
+}
+
+.new-form-field{
+    display: flex;
+}
+
+.sub-heading{
+    margin-bottom: 5px;
+}
+
+.apply-button{
+    background-color: #254067;
+    color: #fff;
+    font-weight: 400;
+}
+
+.onsite-label {
+    width: 117px; 
+    padding-left: 27px;
+}
+
+.offshore-label {
+    width: 100px;
+    padding-left: 10px;
+}
+.disable-button{
+    border-radius: 4px;
+    text-align: right;
+    font: normal normal bold 14px/21px Roboto;
+    letter-spacing: 0px;
+}

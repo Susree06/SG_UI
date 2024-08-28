@@ -1,0 +1,186 @@
+<div *ngIf="isLoaded">
+  <div class="container-fluid acc-config-container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="acc-config-title">Workflow Dashboard</h1>
+      </div>
+      <div class="col-sm-12 mt-3">
+        <div [formGroup]="workFlowForm">
+          <div class="row">
+            <div class="col-sm-3">
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Account</mat-label>
+                <mat-select
+                  placeholder="Select"
+                  formControlName="accountCtrl"
+                  #optsAccountType
+                  (openedChange)="searchCtrlAccountType.setValue('')"
+                >
+                  <div class="checkbox-container">
+                    <app-search-input
+                      [searchCtrl]="searchCtrlAccountType"
+                    ></app-search-input>
+                  </div>
+                  <mat-divider></mat-divider>
+                  <div class="options">
+                    <div
+                      *ngIf="
+                        searchCtrlAccountType.value &&
+                        !optsAccountType.options.length
+                      "
+                      class="no-data"
+                      disabled
+                    >
+                      No results found for "{{ searchCtrlAccountType.value }}".
+                    </div>
+                    <mat-option
+                      *ngFor="let item of filteredAccountOptions | async"
+                      [value]="item.accountId"
+                      (click)="selectAccountName(item)"
+                    >
+                      {{ item.customerName | accountName }}
+                    </mat-option>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Year</mat-label>
+                <mat-select placeholder="Select" formControlName="yearCtrl">
+                  <mat-option
+                    *ngFor="let item of YearList; index as i"
+                    [value]="item"
+                    (click)="selectYear(item)"
+                  >
+                    {{ item }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+              <mat-form-field class="form-field" appearance="outline">
+                <mat-label>Months</mat-label>
+                <mat-select placeholder="Select" formControlName="monthCtrl">
+                  <mat-option
+                    *ngFor="let item of months; index as i"
+                    [value]="item"
+                    (click)="selectMonth(item)"
+                  >
+                    {{ item }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-3 pt-3 d-flex justify-content-end">
+              <button
+                mat-raised-button
+                class="generate-button"
+                (click)="clearSelectedOptions()"
+              >
+                Clear Filters
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="table-wrapper">
+          <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="Accounts" class="mat-column">
+              <mat-header-cell *matHeaderCellDef> Accounts </mat-header-cell>
+              <mat-cell class="mat-cell-acc" *matCellDef="let element">
+                {{ element.accounts | accountName }}
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Project" class="mat-column">
+              <mat-header-cell *matHeaderCellDef> Project </mat-header-cell>
+              <mat-cell class="mat-cell-acc" *matCellDef="let element">
+                {{ element.project }}
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Year">
+              <mat-header-cell *matHeaderCellDef> Year </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.year }}
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Month">
+              <mat-header-cell *matHeaderCellDef> Month </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.month }}
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Location">
+              <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.location }}
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="DMApprover">
+              <mat-header-cell *matHeaderCellDef> DM Approver </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.dmApprover | titlecase }}
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="DMStatus">
+              <mat-header-cell *matHeaderCellDef> DM Status </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.dmStatus }}
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="BDMApprover">
+              <mat-header-cell *matHeaderCellDef> BDM Approver</mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.bdmApprover | titlecase }}
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="BDMStatus">
+              <mat-header-cell *matHeaderCellDef> BDM Status </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                {{ element.bdmStatus }}
+              </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Comment">
+              <mat-header-cell *matHeaderCellDef> Comment </mat-header-cell>
+              <button mat-raised-button>
+                <mat-cell *matCellDef="let element">
+                  <mat-icon
+                    style="color: #53b750; font-size: 20px"
+                    (click)="viewAccDetails(element)"
+                    >remove_red_eye</mat-icon
+                  >
+                </mat-cell>
+              </button>
+            </ng-container>
+            <mat-header-row
+              *matHeaderRowDef="displayedColumns"
+            ></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            <tr class="mat-row " *matNoDataRow>
+              <td class="mat-cell no-data-found"  colspan="5">No data Found !</td>
+            </tr>
+          </table>
+          <div class="paginator">
+            <mat-paginator
+              #paginator
+              fixed
+              [pageSizeOptions]="[5, 10, 20, 50]"
+              showFirstLastButtons
+            >
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

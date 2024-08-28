@@ -1,0 +1,84 @@
+// /* You can add global styles to this file, and also import other style files */
+
+html, body {
+    width:100%;
+   overflow-x:hidden;
+   overflow-y:hidden;
+  }
+  body { margin: 0; font-family:  "Roboto", sans-serif; background-color: #f7f7f7; }
+  
+  .mat-mdc-radio-button.mat-mdc-radio-checked .mat-ripple-element {
+   background-color: #022066 !important;
+  }
+  
+  .mat-mdc-radio-button.mat-mdc-radio-checked .mdc-radio__background::before {
+   background-color: #022066 !important;
+  }
+  
+  .mat-mdc-radio-button
+   .mdc-radio
+   .mdc-radio__native-control:enabled:checked
+   + .mdc-radio__background
+   .mdc-radio__outer-circle {
+   border-color: #022066 !important;
+  }
+  
+  .mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled + .mdc-radio__background .mdc-radio__inner-circle {
+   border-color: #022066 !important;
+  }
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+  *::-webkit-scrollbar-track {
+    background: #fff !important;
+    border-radius: 50px !important;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #C1C1C1 !important;
+    border-radius: 10px !important;;
+  }
+  .customDialogClass {
+    animation:  ease 0.6s alternate none running slideInFromBottom;
+    border-radius: 16px; // Rounded corners 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); //  box-shadow for depth
+    background-color: #ffffff; // White background 
+    color: #333333; // Text color
+    z-index: 1000; // Ensure the dialog is on top of other elements
+    position: relative; // Ensure z-index works properly
+   // max-width: 400px; // Maximum width of the dialog
+    margin: 0 auto; // Center the dialog horizontally
+    overflow: hidden; // Hide overflowing content
+    transition: transform 0.3s ease; // Smooth transition for animations
+    font-family: 'Roboto', sans-serif; //  Roboto font 
+  }
+  
+  .customDialogClass-content {
+    padding: 24px; // Padding for content spacing
+    overflow: hidden; // Hide any content that overflows the dialog
+  }
+  .mycloseclass{
+    animation:  ease 1s alternate none running slideBottomToDownClose;
+  }
+  @keyframes slideInFromBottom {
+    from {
+      opacity: 0;
+      transform: translateY(100%) scaleX(0.7);
+      width: 0;
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scaleX(1);
+      width: 520px; /* Set the final width of the dialog */
+    }
+  }
+  
+  @keyframes slideBottomToDownClose {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }

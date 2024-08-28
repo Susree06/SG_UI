@@ -1,0 +1,101 @@
+<div class="ops-role-dialog">
+    <h1 mat-dialog-title class="title">
+      {{ title }}
+      <mat-icon mat-dialog-close class="close-modal-icon float-end">close</mat-icon>
+    </h1>
+    <div mat-dialog-content class="dialog-content">
+      <form [formGroup]="accountForm" class="form-container">
+        <div class="form-group" *ngIf="SalesDropDown">
+          <mat-form-field appearance="outline" class="form-field mt-2">
+            <mat-label>Account</mat-label> 
+            <mat-select
+              formControlName="accountId"
+              #optsAccount
+              multiple
+              (openedChange)="searchCtrlAccount.setValue('')"
+            >
+              <div class="checkbox-container">
+                <mat-checkbox
+                  color="primary"
+                  [checked]="selected(optsAccount) === 'all'"
+                  [indeterminate]="selected(optsAccount) === 'some'"
+                  (change)="toggleSelection(optsAccount)"
+                  [matTooltip]="selected(optsAccount) === 'all' ? 'Unselect All' : 'Select All'"
+                  matTooltipPosition="above"
+                >
+                </mat-checkbox>
+                <app-search-input [searchCtrl]="searchCtrlAccount"></app-search-input>
+              </div>
+              <mat-divider></mat-divider>
+              <div class="options">
+                <div *ngIf="searchCtrlAccount.value && !optsAccount.options.length" class="no-data" disabled>
+                  No results found for "{{ searchCtrlAccount.value }}".
+                </div>
+                <mat-option *ngFor="let item of filteredAccountOptions | async" [value]="item.customerGroup" (onSelectionChange)="onAccountSelectionChange($event)" (onChange)="toggleSelection($event)">
+                  {{ item.customerGroup }}
+                </mat-option>
+              </div>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <app-multiselect-search *ngIf="AccountDropdown" style="width:85%" Label="Account" [SelectedDropDownName]=SelectedAccountName [options]=options (onSelectionChange)="onAccountSelectionChange($event)" (onChange)="toggleSelection($event)"> 
+            
+          </app-multiselect-search>
+          <app-multiselect-search *ngIf="IGDropdown" style="width:85%" Label="Industry Group" [SelectedDropDownName]=SelectedAccountName [options]=options (onSelectionChange)="onAccountSelectionChange($event)" (onChange)="toggleSelection($event)" (change)="toggleSelection($event)"> 
+            
+          </app-multiselect-search>
+          <app-multiselect-search *ngIf="ProjectDropDown" style="width:85%" Label="Projects" [SelectedDropDownName]=SelectedAccountName [options]=options (onSelectionChange)="onAccountSelectionChange($event)" (onChange1)="toggleSelection1($event)" (change)="toggleSelection($event)" > 
+            
+          </app-multiselect-search>
+          
+        </div>
+        <div class="form-group" >
+          <mat-form-field appearance="outline" class="form-field mt-2" >
+            <mat-label>Financial Year</mat-label>
+            <mat-select multiple [(ngModel)]="selectedYear"  [ngModelOptions]="{standalone: true}">
+              <mat-option [value]="yearList" *ngFor="let yearList of Years" [disabled]="isSelectionDisabled('FinancialYear', yearList)">{{ yearList }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group" *ngIf="showMonthlyDropdown">
+          <mat-form-field appearance="outline" class="form-field mt-2">
+            <mat-label>Months</mat-label>
+            <mat-select multiple [(ngModel)]="selectedMonth" [ngModelOptions]="{standalone: true}">
+              <mat-option [value]="monthList" *ngFor="let monthList of Months">{{ monthList }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group" *ngIf="showQurterlyDropdown">
+          <mat-form-field appearance="outline" class="form-field mt-2">
+            <mat-label>Quarter</mat-label>
+            <mat-select multiple [(ngModel)]="selectedQuarter" [ngModelOptions]="{standalone: true}">
+              <mat-option [value]="quarter" *ngFor="let quarter of quarters">{{ quarter }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group" *ngIf="showHalfYearlyDropdown">
+          <mat-form-field appearance="outline" class="form-field mt-2">
+            <mat-label>Half Yearly</mat-label>
+            <mat-select multiple [(ngModel)]="selectedHalfYearly" [ngModelOptions]="{standalone: true}">
+              <mat-option [value]="halfYearly" *ngFor="let halfYearly of halfYear">{{ halfYearly }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+  
+    <div mat-dialog-actions class="justify-content-center">
+      <button
+        (click)="applyFilter()"
+        mat-raised-button
+        class="mb-3 p-3 search-button"
+      >
+        <mat-icon class="apply-icon">done</mat-icon>
+        Apply
+      </button>
+    </div>
+  </div>

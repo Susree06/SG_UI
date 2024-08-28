@@ -1,0 +1,88 @@
+.ops-role-access-management-container{
+    .role-access-management-header{
+        margin-left: 25px;
+    }
+    .user-save-btn{
+      color: #fff !important;
+      background-color: #3bb54a;
+    }
+    .searched-employee{
+      font-size: 14px;
+      color:#254067;
+    }
+    .employee-name{
+      font-weight:500;
+    }
+    .page-header{
+      border-bottom: 1px solid #254067;
+    }
+    .visa-container {
+      background-color: #fff;
+      padding: 0px;
+      border-radius: 10px;
+    }
+    .table-wrapper {
+      border-radius: 10px 10px 0 0;
+      border-top: 1px solid #f0eeee;
+      border-left: 1px solid #f0eeee;
+      border-right: 1px solid #f0eeee;
+    }
+    .mat-mdc-header-row {
+      background-color: #439495;
+    }
+    .save-btn{
+      background-color: #254067;
+        color: #fff;
+        font-weight: 400;
+        width: max-content;
+        margin-top:15px;
+    }
+    .table-wrapper {
+      overflow-y: auto;
+    }
+    .mat-sort-header {
+      color: #fff;
+    }
+    h1 {
+      color: #254067;
+      font-weight: 500;
+    }
+    .paginator{
+      position: sticky;
+      left: 0;
+      bottom: 0;
+      width:calc(100% - 17px);
+      text-align: center;
+    }
+    .mat-mdc-table .mdc-data-table__row:hover {
+      background-color: #e2e8f0;
+    }
+    input[type=checkbox], input[type=radio] {
+      width: 18px;
+      height: 18px;
+      background-color:red;
+      margin-right: 5px;
+    }
+    input[type=radio]:checked {
+      background:gold;
+    }
+    .mat-mdc-form-field-icon-suffix{
+      padding: 0 0 8px 4px !important;
+    }
+    .scroll-container{
+      padding: 15px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+    .scroll-container::-webkit-scrollbar {
+      width: 2px;
+    }
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: #C1C1C1 !important;
+      border-radius: 10px !important;
+    }
+    .scroll-container::-webkit-scrollbar-track {
+      background: #fff !important;
+      border-radius: 50px !important;
+    }
+  }

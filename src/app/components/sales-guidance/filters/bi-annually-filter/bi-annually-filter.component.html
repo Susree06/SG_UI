@@ -1,0 +1,23 @@
+<div class="filter-container">
+  <div class="sub-container">
+    <h2>Filter</h2>
+    <mat-icon style="cursor: pointer" (click)="onClose()">close</mat-icon>
+  </div>
+  <div>
+    <h4>Duration</h4>
+  </div>
+  <div>
+    <mat-form-field class="form-field" appearance="outline">
+            <mat-select placeholder="Select" (valueChange)="valueChanged($event)">
+              <mat-option *ngFor="let item of duration" [value]="item.id">
+                {{item.name}}
+              </mat-option>
+            </mat-select>
+    </mat-form-field>
+  </div>
+  <br><br>
+  <button mat-raised-button [ngClass]="!isValueChanged?'disable-button':'apply-button'" [disabled]="!isValueChanged" class="sign-button"
+    (click)="onApply()">
+    Apply
+  </button>
+</div>

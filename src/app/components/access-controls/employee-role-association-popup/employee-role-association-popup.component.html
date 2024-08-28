@@ -1,0 +1,58 @@
+<div class="ops-role-dialog ">
+  <h1 mat-dialog-title>
+    {{ title }}
+    <mat-icon mat-dialog-close class="close-modal-icon float-end">close</mat-icon>
+  </h1>
+  <form [formGroup]="employeeRoleForm" (ngSubmit)="save()">
+    <div mat-dialog-content>
+      <div class="row">
+        <mat-form-field class="col-5 mb-2">
+          <mat-label>User Name</mat-label>
+          <input matInput formControlName="userName" />
+        </mat-form-field>
+        <mat-form-field class="col-6 mb-2" appearance="fill">
+          <mat-label>Roles</mat-label>
+          <mat-select
+            formControlName="roles"
+            #optsRole
+            multiple
+            (openedChange)="searchCtrlRole.setValue('')"
+          >
+            <div class="checkbox-container">
+              <app-search-input
+                [searchCtrl]="searchCtrlRole"
+              ></app-search-input>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="options">
+              <div
+                *ngIf="searchCtrlRole.value && !optsRole.options.length"
+                class="no-data"
+                disabled
+              >
+                No results found for "{{ searchCtrlRole.value }}".
+              </div>
+              <mat-option
+                *ngFor="let item of filteredRoleOptions | async"
+                [value]="item.roleId"
+                (onSelectionChange)="onSelectionChange($event)"
+              >
+                {{ item.roleName }}
+              </mat-option>
+            </div>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div mat-dialog-actions class="justify-content-center">
+      <button
+        mat-raised-button
+        class="save-btn-dialog"
+        [hidden]="!isEditMode"
+        [disabled]="!hasFormChanges"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>

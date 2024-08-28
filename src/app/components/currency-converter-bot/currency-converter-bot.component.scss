@@ -1,0 +1,37 @@
+.chat-bot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .chat-bot button {
+    position: relative;
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    border: none;
+    border-radius: 50%;
+    background-color: #3AB54A;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.5); /* Adjust shadow width */
+    cursor: pointer;
+    overflow: hidden;
+    animation: pulse 2s infinite; /* Adjust animation speed */
+  }
+  
+  .chat-bot button i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+  @keyframes pulse {
+    0% {
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(242, 248, 242, 0.5);
+    }
+    50% {
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5), 0 0 50px rgba(0, 255, 0, 0);
+    }
+    100% {
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.5);
+    }
+  }

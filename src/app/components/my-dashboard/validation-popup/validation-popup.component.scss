@@ -1,0 +1,35 @@
+.mat-mdc-dialog-container  {
+    background-color: #fff;
+  }
+  .mdc-dialog__title {
+  color:#333;
+  }
+  .mdc-dialog__content p {
+    font-size: 16px;
+  }
+  mdc-dialog-actions button.mat-button {
+    margin: 0 10px; /* Add some space between buttons */
+  }
+  .custom-dialog-actions{
+    display: flex;
+    justify-content: center;
+  }
+  .custom-close-btn{
+    background-color: #254067;
+    color: #fff !important;
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+  .custom-close-btn:hover{
+    background-color: #254067;
+  }
+  .mdc-button__label{
+    color:#fff;
+    font-weight: normal;
+  }
+  .mat-mdc-dialog-title{
+    color:#cc3300;
+  }
+  .mat-typography h2{
+    margin-bottom: 0px;
+  }

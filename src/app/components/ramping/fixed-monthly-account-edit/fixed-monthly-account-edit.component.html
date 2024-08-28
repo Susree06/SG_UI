@@ -1,0 +1,164 @@
+<div class="container-fluid ramp-up-dialog-container">
+    <div class="row pt-2">
+      <div class="col-sm-12 d-flex justify-content-between">
+        <h2 mat-dialog-title class="account-name">Modify <span class="">{{ accountName | accountName }} | {{ location }}</span>
+          <app-tool-tip></app-tool-tip>
+        </h2>
+        <mat-icon style="cursor: pointer" class="close-btn" (click)="onClose()">close</mat-icon>
+      </div>
+    </div>
+    <mat-dialog-content *ngIf="isLoaded">
+      <div class="row">
+        <div class="col-sm-2 d-flex  px-0">
+          <span class="text-label"></span>
+        </div>
+        <div class="col-sm-10 d-flex justify-content-between">
+          
+          <div *ngFor="let item of currentHeadCount" class="headount-input">
+            <p class=" months-header">{{ item.name }}</p>
+          </div>
+        </div>
+      
+       
+        <div class="col-sm-12 d-flex align-items-center px-0 pt-3">
+          <span class="text-label">DM </span>
+         
+        </div>
+    
+        <div class="col-sm-2 d-flex px-0 justify-content-center ">
+            <span class="text-label-CR">Amount(USD $) : </span>
+           
+          </div>
+        <div class="col-sm-10 d-flex justify-content-between">
+            <div *ngFor="let item of DM" class="headount-input">
+              <mat-form-field class="form-field-container" appearance="outline">
+                <span *ngIf="isDM">
+                  <input
+                  name="item.name"
+                    matInput
+                    type="text"
+                    maxlength="7"
+                    [(ngModel)]="item.count"
+                    [disabled]="item.id <= 6"
+                    [required]="item.id > 6"
+                    #dmInput="ngModel"
+                    (input)="checkDirty(dmInput); isDataUpdated(item.billingRate, item.count, item.id)"
+                    numbersOnly
+                    [ngClass]=" (lastApproval ==='DM' && item.id > 6) ? 'approved' : 'notApproved'"
+                  />
+                </span>
+                <span *ngIf="!isDM">
+                  <input
+                  matInput
+                  type="text"
+                  maxlength="7"
+                  (keyup)="isDataUpdated(item.billingRate, item.count, item.id)"
+                  [(ngModel)]="item.count"
+                  [disabled]="true"
+                  [ngClass]=" (lastApproval ==='DM' && item.id > 6) ? 'approved' : 'notApproved'"
+                />
+                </span>
+              </mat-form-field>
+            </div>
+    
+        </div>
+       
+        
+        <div class="col-sm-12 d-flex align-items-center px-0">
+          <span class="text-label">BDM  </span>
+        </div>
+ 
+        <div class="col-sm-2 d-flex px-0 justify-content-center ">
+            <span class="text-label-CR">Amount(USD $) :  </span>
+          </div>
+        <div class="col-sm-10 d-flex justify-content-between">
+          <div *ngFor="let item of BDM" class="headount-input">
+            <mat-form-field class="form-field-container" appearance="outline">
+              <span *ngIf="isBDM ">
+                <input
+                matInput
+                type="text"
+                maxlength="7"
+                [(ngModel)]="item.count"
+                [disabled]="item.id <= 6"
+                [required]="item.id > 6"
+                #bdmInput="ngModel"
+                (input)="checkDirty(bdmInput); isDataUpdated(item.billingRate, item.count, item.id)"
+                numbersOnly
+                [ngClass]=" (lastApproval ==='BDM' && item.id > 6) ? 'approved' : 'notApproved'"
+              />
+              </span>
+              <span *ngIf="!isBDM">
+                <input
+                matInput
+                type="text"
+                maxlength="7"
+                (keyup)="isDataUpdated(item.billingRate, item.count, item.id)"
+                [(ngModel)]="item.count"
+                [disabled]="true"
+                [ngClass]=" (lastApproval ==='BDM' && item.id > 6) ? 'approved' : 'notApproved'"
+              />
+              </span>
+            </mat-form-field>
+          </div>
+        </div>
+
+
+        <div class="col-sm-2 d-flex align-items-center px-0">
+            <span class="text-label">Revenue(USD $) : </span>
+          </div>
+          <div class="col-sm-10 d-flex justify-content-between">
+            <div *ngFor="let item of TotalRenevue" class="headount-input d-flex justify-content-center">
+              <p class="revenue-number text-center">{{ item.totalValue | number }}</p>
+            </div>
+          </div>
+        <div class="col-sm-2 d-flex align-items-center px-0">
+          <span class="text-label">Comment: </span>
+        </div>
+        <div class="col-sm-10 mt-4">
+          <div class="comment-textarea-div">
+            <textarea
+              placeholder="Enter comment here..."
+              rows="4"
+              cols="50"
+              maxlength="255"
+              name="comment"
+              [(ngModel)]="comments"
+              (keyup)="onTextChange($event)"
+              [disabled]="!dataUpdated && !commantUpdate"
+              required
+              #commentInput="ngModel"
+            ></textarea>
+            <mat-error
+              *ngIf="
+                commentInput.invalid && (commentInput.dirty || commentInput.touched)
+              "
+            >
+              <span> Please Enter Comments. </span>
+            </mat-error>
+          </div>
+        </div>
+  
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <div class="col-sm-12 d-flex justify-content-between">
+        <button mat-raised-button class="enable-button" (click)="onShowComments()">
+          Show Comments
+        </button>
+        <button
+          mat-raised-button
+          [ngClass]="
+            !dataUpdated && !commantUpdate
+              ? 'disable-button'
+              : 'enable-button'
+          "
+          [disabled]="!dataUpdated && !commantUpdate"
+          (click)="onUpdate()"
+        >
+        Submit
+        </button>
+  
+    </div>
+    </mat-dialog-actions>
+  </div>

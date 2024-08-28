@@ -1,0 +1,76 @@
+.ops-role-dialog {
+
+    .close-modal-icon {
+        color: #254067;
+        cursor: pointer;
+        margin-top: 19px;
+    }
+    .save-btn-dialog {
+        background-color: #254067;
+        color: #fff;
+        font-weight: 400;
+    }
+    .close-btn-dialog {
+        top:40px;
+        background-color: #FF605C;
+        color: #fff;
+        font-weight: 400;
+    }
+    //Mat class
+    .mat-mdc-form-field {
+        display: flex !important;
+    }
+    .mat-mdc-icon-button .mat-mdc-button-persistent-ripple {
+        border-radius: 2% !important;
+    }
+
+    ::ng-deep.mat-mdc-checkbox label {
+        top: 4px;
+        position: relative;
+    }
+
+    ::ng-deep.mdc-text-field--disabled .mdc-text-field__input {
+        color: rgba(0, 0, 0, .87);
+    }
+
+    ::ng-deep.mat-mdc-select-disabled .mat-mdc-select-value {
+        color: rgba(0, 0, 0, .87);
+    }
+
+    ::ng-deep.mdc-text-field--disabled.mdc-text-field--filled {
+        background-color: #edededd4;
+    }
+
+    ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+        background-color: #f7f7f78a;
+    }
+
+}
+
+// mat-form-field,
+app-search-input {
+    width: 100%;
+}
+
+.mat-checkbox {
+    margin-right: 8;
+}
+
+.checkbox-container {
+    height: 44px;
+    margin: 0 10px 0 6px;
+    display: flex;
+}
+
+.options {
+    max-height: 211px;
+    overflow: auto;
+}
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    opacity: 0.75;
+    font-weight: 500;
+}

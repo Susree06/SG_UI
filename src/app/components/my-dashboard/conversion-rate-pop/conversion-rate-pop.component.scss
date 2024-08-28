@@ -1,0 +1,64 @@
+.conversion-rate-popup-container {
+  h4 {
+    line-height: 20px !important;
+  }
+  .manage-account-container {
+    margin: 5% 5% 0 5%;
+    display: block;
+    line-height: 22px;
+  }
+
+  .mat-mdc-radio-button.mdc-form-field {
+    font-size: 12px;
+  }
+
+  .form-field {
+    width: 400px;
+    height: 46px;
+  }
+
+  .new-form-field {
+    display: flex;
+  }
+
+  .sub-heading {
+    margin-bottom: 1px;
+    font-size: 16px;
+  }
+
+  .apply-button {
+    border-radius: 4px;
+    text-align: right;
+    font: normal normal bold 14px/21px Roboto;
+   // letter-spacing: 0px;
+    background-color: #254067;
+    color: #fff;
+    font-weight: 400;
+  }
+  .currency-country-input {
+    ::ng-deep.mat-mdc-text-field-wrapper {
+      width: 250px !important;
+    }
+    ::ng-deep.mat-mdc-form-field-subscript-wrapper {
+      display: none !important;
+    }
+  }
+  .rate-input {
+    ::ng-deep.mat-mdc-text-field-wrapper {
+      width: 250px;
+    }
+    ::ng-deep.mat-mdc-form-field-subscript-wrapper {
+      display: none !important;
+    }
+  }
+  .disable-button {
+    border-radius: 4px;
+    text-align: right;
+    font: normal normal bold 14px/21px Roboto;
+    letter-spacing: 0px;
+  }
+  .conversion-rate-heading{
+    position: relative;
+    left:10px
+  }
+}

@@ -1,0 +1,25 @@
+.ig-configuration-dialog{
+.close-modal-icon {
+  float: right;
+  display: flex;
+}
+.close-btn-dialog {
+  background-color: #ff605c;
+  color: #fff;
+  font-weight: 400;
+}
+
+::ng-deep {
+  div.mat-mdc-dialog-surface.mdc-dialog__surface {
+    overflow: hidden;
+  }
+}
+.addBtn{
+ font-weight: 400;
+  color: #fff ;
+  background: #254067 ;
+}
+.text-form-field{
+  padding: 5px;
+}
+}

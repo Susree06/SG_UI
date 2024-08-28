@@ -1,0 +1,94 @@
+<div class="role-access-management-container">
+  <div class="container">
+    <div class="row d-flex justify-content-center mb-5">
+      <div class="col-sm-11 mt-4 px-0">
+        <h1 class="role-access-management-title">Role Access Management</h1>
+      </div>
+      <div class="col-sm-11 employeeRole-container mt-3">
+        <div class="search-box mb-3">
+          <input
+            class="search-txt"
+            type="text"
+            name=""
+            id=""
+            (keyup)="applyFilter($event,'init')"
+            placeholder="Enter Role Name"
+            matInput
+            #input
+          />
+          <a class="search-btn">
+            <img src="../../../assets/icons/search-icon.svg" alt="" />
+          </a>
+        </div>
+
+        <div class="row">
+
+        <div class="table-wrapper col-md-7">
+          <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="roleName">
+              <th mat-header-cell *matHeaderCellDef>Employee Roles</th>
+              <td mat-cell *matCellDef="let element">
+                <ng-container>
+                  {{ element.roleName }}
+                </ng-container>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Action">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  mat-icon-button
+                  (click)="openDialog(element)"
+                  matTooltip="Edit"
+                  matTooltipPosition="right"
+                  class="table-edit-button"
+                >
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            <tr class="mat-row " *matNoDataRow>
+              <td class="mat-cell no-data-found"  colspan="5">No data Found !</td>
+            </tr>
+          </table>
+          <div class="paginator">
+            <mat-paginator
+              fixed
+              [pageSizeOptions]="[5, 10, 20, 50]"
+              showFirstLastButtons
+            >
+            </mat-paginator>
+          </div>
+        </div>
+
+        <div class="col-md-5 add-role-container ">
+          <div class="add-role-box">
+            <h2 class="add-role-title">Add New Role</h2>
+            <div class="add-role-form">
+              <mat-form-field appearance="fill">
+                <mat-label>Enter New Role</mat-label>
+                <input
+                  matInput
+                  placeholder="Role Name"
+                  [(ngModel)]="newRoleName"
+                />
+              </mat-form-field>
+              <button mat-raised-button color="primary" (click)="addNewRole()" [disabled]="!newRoleName || newRoleName.trim().length === 0">
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

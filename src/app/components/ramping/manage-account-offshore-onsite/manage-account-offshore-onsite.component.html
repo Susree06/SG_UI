@@ -1,0 +1,305 @@
+<div class="offshore-onsite-container">
+  <mat-dialog-content *ngIf="isLoaded">
+    <div class="row">
+      <div class="col-sm-2 d-flex align-items-center px-0">
+        <span style="padding-top: 10px" class="text-label"
+          >Billing Rate :
+        </span>
+      </div>
+      <div class="col-sm-10 d-flex justify-content-between">
+        <div *ngFor="let item of currentHeadCount" class="headount-input">
+          <p class="d-flex justify-content-center months-header">
+            {{ item.name }}
+          </p>
+
+          <mat-form-field class="form-field-container" appearance="outline">
+            <input
+              matInput
+              type="text"
+              maxlength="4"
+              [(ngModel)]="item.billingRate"
+              readonly
+              [disabled]="true"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div
+        class="col-sm-2 d-flex align-items-center px-0"
+        style="align-self: baseline"
+      >
+        <span class="text-label">Current Head Count : </span>
+      </div>
+      <div class="col-sm-10 d-flex justify-content-between">
+        <div *ngFor="let item of currentHeadCount" class="headount-input">
+          <mat-form-field class="form-field-container" appearance="outline">
+            <input
+              matInput
+              type="text"
+              maxlength="4"
+              [(ngModel)]="item.count"
+              readonly
+              [disabled]="true"
+              [ngClass]="
+                lastApproval == 'System' && item.id > 6
+                  ? 'approved'
+                  : 'notApproved'
+              "
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div
+        class="col-sm-2 d-flex align-items-center px-0"
+        style="align-self: baseline"
+      >
+        <span class="text-label">DM : </span>
+      </div>
+      <div class="col-sm-10 d-flex justify-content-between">
+        <div *ngFor="let item of DM" class="headount-input">
+          <mat-form-field class="form-field-container" appearance="outline">
+            <span *ngIf="isDM">
+              <input
+                name="item.name"
+                matInput
+                type="text"
+                maxlength="5"
+                [(ngModel)]="item.count"
+                [disabled]="item.id <= 6"
+                [required]="item.id > 6"
+                #dmInput="ngModel"
+                [ngClass]="
+                  lastApproval == 'DM' && item.id > 6
+                    ? 'approved'
+                    : 'notApproved'
+                "
+                (input)="
+                  checkDirty(dmInput);
+                  isDataUpdated(
+                    item.billingRate,
+                    item.count,
+                    item.id,
+                    TotalRenevue[item.id - 1].adjustmentAmount
+                  )
+                "
+              />
+            </span>
+            <span *ngIf="!isDM">
+              <input
+                matInput
+                type="text"
+                maxlength="5"
+                (keyup)="
+                  isDataUpdated(
+                    item.billingRate,
+                    item.count,
+                    item.id,
+                    TotalRenevue[item.id - 1].adjustmentAmount
+                  )
+                "
+                [(ngModel)]="item.count"
+                [disabled]="true"
+                [ngClass]="
+                  lastApproval == 'DM' && item.id > 6
+                    ? 'approved'
+                    : 'notApproved'
+                "
+              />
+            </span>
+            <!-- <mat-error
+                class="error-class"
+                *ngIf="
+                  countInput.invalid && (countInput.dirty || countInput.touched)
+                "
+              >
+                Count is required.
+              </mat-error> -->
+          </mat-form-field>
+        </div>
+      </div>
+      <div
+        class="col-sm-2 d-flex align-items-center px-0"
+        style="align-self: baseline"
+      >
+        <span class="text-label">BDM : </span>
+      </div>
+      <div class="col-sm-10 d-flex justify-content-between">
+        <div *ngFor="let item of BDM" class="headount-input">
+          <mat-form-field class="form-field-container" appearance="outline">
+            <span *ngIf="isBDM">
+              <input
+                matInput
+                type="text"
+                maxlength="5"
+                [(ngModel)]="item.count"
+                [disabled]="item.id <= 6"
+                [required]="item.id > 6"
+                #bdmInput="ngModel"
+                [ngClass]="
+                  lastApproval == 'BDM' && item.id > 6
+                    ? 'approved'
+                    : 'notApproved'
+                "
+                (input)="
+                  checkDirty(bdmInput);
+                  isDataUpdated(
+                    item.billingRate,
+                    item.count,
+                    item.id,
+                    TotalRenevue[item.id - 1].adjustmentAmount
+                  )
+                "
+              />
+            </span>
+            <span *ngIf="!isBDM">
+              <input
+                matInput
+                type="text"
+                maxlength="5"
+                (keyup)="
+                  isDataUpdated(
+                    item.billingRate,
+                    item.count,
+                    item.id,
+                    TotalRenevue[item.id - 1].adjustmentAmount
+                  )
+                "
+                [(ngModel)]="item.count"
+                [disabled]="true"
+                [ngClass]="
+                  lastApproval == 'BDM' && item.id > 6
+                    ? 'approved'
+                    : 'notApproved'
+                "
+              />
+            </span>
+          </mat-form-field>
+        </div>
+      </div>
+      <div
+        class="col-sm-2 d-flex align-items-center px-0"
+        style="align-self: baseline"
+      >
+        <span class="text-label">Adjustment(USD $) : </span>
+      </div>
+      <div class="col-sm-10 d-flex justify-content-between">
+        <div *ngFor="let item of TotalRenevue" class="headount-input">
+          <mat-form-field class="form-field-container" appearance="outline">
+            <span *ngIf="isBDM || isDM">
+              <input
+                matInput
+                type="text"
+                maxlength="7"
+                pattern="^[+\-]?[0-9]{1,9}(?:\.[0-9]+)?$"
+                [(ngModel)]="item.adjustmentAmount"
+                [disabled]="item.id <= 6"
+                [required]="item.id > 6"
+                #adjustmentInput="ngModel"
+                (input)="
+                  checkDirty(adjustmentInput);
+                  isDataUpdated(
+                    isBDM
+                      ? BDM[item.id - 1].billingRate
+                      : DM[item.id - 1].billingRate,
+                    isBDM ? BDM[item.id - 1].count : DM[item.id - 1].count,
+                    item.id,
+                    item.adjustmentAmount
+                  )
+                "
+              />
+            </span>
+            <span *ngIf="!isBDM && !isDM">
+              <input
+                matInput
+                type="text"
+                pattern="^[+\-]?[0-9]{1,9}(?:\.[0-9]+)?$"
+                maxlength="7"
+                (keyup)="
+                  isDataUpdated(
+                    isBDM
+                      ? BDM[item.id - 1].billingRate
+                      : DM[item.id - 1].billingRate,
+                    isBDM ? BDM[item.id - 1].count : DM[item.id - 1].count,
+                    item.id,
+                    item.adjustmentAmount
+                  )
+                "
+                [(ngModel)]="item.adjustmentAmount"
+                [disabled]="true"
+              />
+            </span>
+          </mat-form-field>
+        </div>
+      </div>
+      <div
+        class="col-sm-2 d-flex align-items-center px-0"
+        style="align-self: baseline"
+      >
+        <span class="text-label">Revenue(USD $) : </span>
+      </div>
+      <div class="col-sm-10 d-flex justify-content-between">
+        <div
+          *ngFor="let item of TotalRenevue"
+          class="headount-input d-flex justify-content-center"
+        >
+          <p class="revenue-number text-center">
+            {{ item.totalValue | number }}
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-2 d-flex align-items-center px-0">
+        <span class="text-label">Comment: </span>
+      </div>
+      <div class="col-sm-10 mt-4">
+        <div class="comment-textarea-div">
+          <textarea
+            placeholder="Enter comment here..."
+            rows="4"
+            cols="50"
+            maxlength="255"
+            name="comment"
+            [(ngModel)]="comments"
+            (keyup)="onTextChange($event)"
+            [disabled]="!dataUpdated && !commantUpdate"
+            required
+            #commentInput="ngModel"
+          ></textarea>
+          <mat-error
+            *ngIf="
+              commentInput.invalid &&
+              (commentInput.dirty || commentInput.touched)
+            "
+          >
+            <span> Please Enter Comments. </span>
+          </mat-error>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="col-sm-12 ">
+      <div class="note-message">
+        Note: Data will be saved only for the currently active tab (Offshore or Onsite).
+      </div>
+    </div>
+    <div class="col-sm-12 d-flex justify-content-between">
+      <button
+        mat-raised-button
+        class="enable-button"
+        (click)="onShowComments()"
+      >
+        Show Comments
+      </button>
+      <button
+        mat-raised-button
+        [ngClass]="
+          !dataUpdated && !commantUpdate ? 'disable-button' : 'enable-button'
+        "
+        [disabled]="!dataUpdated && !commantUpdate"
+        (click)="onUpdate()"
+      >
+        Submit
+      </button>
+    </div>
+  </mat-dialog-actions>
+</div>

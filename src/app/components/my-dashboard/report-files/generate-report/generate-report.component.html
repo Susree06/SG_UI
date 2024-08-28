@@ -1,0 +1,49 @@
+<div class="container-fluid generate-report">
+  <mat-card-header class="title-text">
+    <mat-card-title class="header-text">Upload File</mat-card-title>
+    <mat-icon class="close-icon" (click)="onClose()">close</mat-icon>
+  </mat-card-header>
+  <div class="content-box">
+    <mat-card-content class="upload-files-content">
+      <div>
+        <div class="form-group mb-4">
+          <div class="mb-2">
+            <label class="label-text">Select which file you want to upload?</label>
+            <div class="radio-button-container">
+              <div class="abc-btn radio-button">
+                <div *ngFor="let fileType of fileTypes; let i = index" class="radio-item">
+                  <mat-radio-button (change)="radioButtonOnChange(fileType)" [value]="fileType.id" [checked]="fileType.id === selectedFileType">
+                    {{fileType.name}}
+                  </mat-radio-button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="browse-text">Browse a file</span>
+        <div class="dropzone">
+          <input type="file" (change)="onFileChange($event)" #fileInput [accept]="accept" [multiple]="multiple" />
+          <button mat-icon-button (click)="fileInput.click()" type="button" class="upload-button">
+            <img src="../../../../../assets/icons/cloud-upload.svg" class="icon-class" alt="Upload Icon" />
+          </button>
+          <h4 class="drag-drop-text">Drag and drop here</h4>
+          <h4 class="or-text">or</h4>
+          <a  class="browse-file" for="fileDropRef">Browse files</a>
+        </div>
+        <span>Accepted file types: .xlsx,.csv files only</span><br />
+        <span>{{ this.Report?.name }}</span>
+      </div>
+    </mat-card-content>
+    <div class="generate-button-div">
+      <a [href]="selectedFileTypeLink">
+        <button mat-raised-button class="generate-button">
+          <mat-icon aria-hidden="true">file_download</mat-icon>
+          Download Template
+        </button>
+      </a>
+      <button mat-raised-button class="download-button" (click)="uploadFile()">
+        Upload
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.other-config-container{
+  overflow: hidden;
+  .close-modal-icon {
+    float: right;
+    color:#254067;
+    display: flex;
+    margin-top: 15px;
+    margin-right: 10px;
+  }
+  .close-btn-dialog {
+    background-color: #ff605c;
+    color: #fff;
+    font-weight: 400;
+  }
+  .title{
+    color:#254067;
+}
+  .addBtn{
+    font-size: 14px;
+    height: 40px;
+    border-radius: 4px;
+    text-align: right;
+    letter-spacing: 0px;
+    color: #fff !important;
+    background-color: #254067;
+    font-weight: 400;
+  }
+  .text-form-field{
+    padding: 5px;
+  }
+}

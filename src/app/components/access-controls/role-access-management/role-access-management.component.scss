@@ -1,0 +1,139 @@
+
+.role-access-management-container{
+  .no-data-found {
+    text-align: center;
+    padding: 16px;
+    font-size: 18px;
+    color:#254067 ;
+  }
+    .add-role-container {
+        background-color: #fff;
+        width:35%;
+        height: max-content;
+       margin-left: 60px;
+        border-radius: 10px;
+        border: 1px solid #f0eeee;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    
+        .add-role-box {
+          padding: 20px;
+    
+          .add-role-title {
+            font-weight: 500;
+            color: #254067;
+            margin-bottom: 20px;
+          }
+    
+          .add-role-form {
+            display: flex;
+            flex-direction: column;
+    
+            mat-form-field {
+              width: 100%;
+              margin-bottom: 10px;
+            }
+    
+            button {
+              align-self: flex-start; 
+              background-color: #254067;
+                color: #fff;
+                font-weight: 400;
+            }
+          }
+        }
+      } 
+
+  
+
+    .role-access-management-title{
+      font-weight: 500;
+      color: #254067;
+      border-bottom: 1px solid #254067;
+      display: inline-block;
+      position: relative;
+      right:9px
+    }
+    .employeeRole-container {
+      background-color: #fff;
+      padding: 0px;
+      border-radius: 10px;
+       //Search box
+    .search-box {
+      position: relative; 
+      background-color: #02aab0;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      padding: 3px;
+      width: 100%;
+      max-width: 300px;
+      right:11px;
+    }
+    .search-box .search-txt {
+      border: none;
+      background: none;
+      outline: none;
+      padding: 0;
+      color: white;
+      font-size: 16px;
+      transition: 0.4s;
+      line-height: 40px;
+      flex-grow: 1;
+      margin-left: 25px;     
+    }
+    .search-box .search-btn {
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+    }
+    .search-box:hover > .search-txt{
+      width:240px;
+      padding: 0 6px;
+    }
+    .search-box:hover > .search-btn{
+      background: #fff;
+    }
+    .search-txt::placeholder{
+      text-align: right;
+      padding: 10px;
+      color: #fff;
+    }
+      .table-wrapper {
+        border-radius: 10px 10px 0 0;
+        border-top: 1px solid #f0eeee;
+        border-left: 1px solid #f0eeee;
+        border-right: 1px solid #f0eeee;
+        border-bottom: 1px solid #f0eeee;
+        .mat-mdc-table thead {
+          background: #439495 !important;
+        }
+        padding: 0;
+      }
+    }
+    .paginator{
+      border-top: 1px solid #f0eeee;
+    }
+    .leave-details-save-btn{
+      color: #fff;
+      background-color: #254067;
+    }
+    .table-edit-button {
+      color: #3bb54a; 
+    }
+    .table-view-button {
+       color: #254067; 
+    }
+  
+  //Mat-classess
+     .mat-mdc-table tbody,.mat-mdc-header-cell {
+      background: #439495 !important;
+    }
+     .mdc-data-table__header-cell {
+      color: #fff;
+    }
+  }

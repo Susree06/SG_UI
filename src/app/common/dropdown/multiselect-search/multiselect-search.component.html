@@ -1,0 +1,39 @@
+<div class="ops-role-dialog">
+  <form [formGroup]="accountForm" class="form-container">
+    <!-- <div class="form-group"> -->
+      <mat-form-field appearance="outline" class="form-field mt-2">
+        <mat-label>{{ Label }}</mat-label>
+        <mat-select
+        formControlName="accountId"
+           
+          #optsAccount
+          multiple
+          (openedChange)="searchCtrlAccount.setValue('')"
+        >
+          <div class="checkbox-container">
+            <mat-checkbox
+              color="primary"
+              [checked]="selected(optsAccount) === 'all'"
+              [indeterminate]="selected(optsAccount) === 'some'"
+              (change)="toggleSelection(optsAccount)"
+              [matTooltip]="selected(optsAccount) === 'all' ? 'Unselect All' : 'Select All'"
+              matTooltipPosition="above"
+            >
+            </mat-checkbox>
+            <app-search-input [searchCtrl]="searchCtrlAccount"></app-search-input>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="options">
+            <div *ngIf="searchCtrlAccount.value && !optsAccount.options.length" class="no-data" disabled>
+              No results found for "{{ searchCtrlAccount.value }}".
+            </div>
+            <mat-option *ngFor="let item of filteredDropdownOptions | async" [value]="item.Value" (onSelectionChange)="onAccountSelectionChange($event)" (change)="toggleSelection($event)" (onChange)="toggleSelection($event)">
+              {{ item.Label }}
+            </mat-option>
+          </div>
+        </mat-select>
+      </mat-form-field>
+    <!-- </div>  -->
+
+</form>
+</div>

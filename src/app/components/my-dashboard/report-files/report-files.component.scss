@@ -1,0 +1,128 @@
+.generate-button {
+  position: relative;
+  border-radius: 4px;
+  text-align: right;
+  letter-spacing: 0px;
+  color: #fff !important;
+  background: #2c953a !important;
+}
+
+.report-files-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  letter-spacing: 0px;
+  color: #272b30;
+  font-weight: 500;
+}
+
+.back-text {
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0px;
+  color: #272b30;
+  margin-left: 60px;
+  margin-top: 30px;
+}
+
+.report-files-div {
+  display: flex;
+  margin-left: 55px;
+}
+
+.report-search-input-div {
+  position: absolute;
+  left: 28px;
+}
+.search-text-field {
+  width: 257px;
+}
+::ng-deep .search-text-field
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #fff;
+}
+::ng-deep .search-text-field .mdc-line-ripple {
+  display: none;
+}
+
+
+
+
+// .searchItems-label-field {
+//   padding-left: 19px;
+//   height: 24px;
+//   width: 224px;
+//   color: black-light;
+//   font-family: "IBM Plex Sans";
+//   font-size: 13.95px;
+//   letter-spacing: 0.13px;
+//   line-height: 24px;
+// }
+
+// .goalSet-search-icon-div {
+//   position: relative;
+//   height: 49px;
+//   width: 49px;
+// }
+
+.search-icon {
+  height: 24px;
+  width: 24px;
+  color: #adb5bd;
+  margin: 8px;
+}
+
+.search-report-div {
+  position: relative;
+  left: 602px;
+  bottom: 10px;
+  width: 287px;
+  height: 42px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: white;
+}
+// .reports {
+//   height: 40px;
+//   width: 160px;
+//   margin-left: 30px;
+//   display: flex;
+//   flex-direction: row;
+// }
+
+// .title {
+//   font-family: "Roboto", sans-serif;
+//   font-size: 12px;
+//   letter-spacing: 0px;
+//   color: #272b30;
+//   font-weight: 800;
+//   margin-left: 30px;
+//   margin-top: -11px;
+// }
+
+.arrow-icon {
+  cursor: pointer;
+  position: relative;
+  left: 55px;
+  top: 27px;
+}
+.dashboard-div {
+  display: flex;
+  flex-direction: row;
+}
+.generate-button-div {
+  position: relative;
+  left: 626px;
+  bottom: 8px;
+}
+.hr-line {
+  margin-left: 55px;
+  width: 1185px;
+  margin-bottom: 20px;
+}
+.report-list-div {
+  margin-left: 55px;
+  width: 1185px;
+}
+::ng-deep .search-text-field .mat-mdc-text-field-wrapper {
+  height:40px !important;
+}

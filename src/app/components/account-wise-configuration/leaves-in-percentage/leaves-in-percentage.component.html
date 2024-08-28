@@ -1,0 +1,103 @@
+<div class="row employee-role-association-container mt-3 mb-4">
+    <div class="col-sm-12">
+      <div class="search-box mb-1">
+        <input class="search-txt" type="text" name="" id="" (keyup)="applyFilter($event)"
+          placeholder="Enter Account Name" matInput #input>
+        <a class="search-btn">
+          <img src="../../../assets/icons/search-icon.svg" alt="">
+        </a>
+      </div>
+    </div>
+    <div class="col-sm-12">     
+      <div class="table-wrapper">
+        <table mat-table [dataSource]="dataSource" matSort >
+          <ng-container matColumnDef="Accounts" sticky >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header > Accounts</th>
+            <td mat-cell class="mat-cell-acc" *matCellDef="let element">
+              {{ element.accountName | accountName }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="AccountManagerName" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header > Account Manager</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.accountManager }}
+            </td>
+            </ng-container>
+            <ng-container matColumnDef="Location"  >
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+              <td mat-cell *matCellDef="let element" class="table-header">
+                {{element.location}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Jan">
+              <th mat-header-cell *matHeaderCellDef> Jan'{{curDate}} </th>
+              <td mat-cell *matCellDef="let element"> {{ element.jan }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Feb">
+              <th mat-header-cell *matHeaderCellDef> Feb'{{curDate}} </th>
+              <td mat-cell *matCellDef="let element"> {{ element.feb }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Mar">
+              <th mat-header-cell *matHeaderCellDef> Mar'{{curDate}} </th>
+              <td mat-cell *matCellDef="let element"> {{ element.mar }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Apr">
+              <th mat-header-cell *matHeaderCellDef> Apr'{{curDate}} </th>
+              <td mat-cell *matCellDef="let element"> {{ element.apr }} </td>
+            </ng-container>
+            <ng-container matColumnDef="May">
+              <th mat-header-cell *matHeaderCellDef> May'{{curDate}} </th>
+              <td mat-cell *matCellDef="let element"> {{ element.may }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Jun">
+              <th mat-header-cell *matHeaderCellDef> Jun'{{curDate}} </th>
+              <td mat-cell *matCellDef="let element"> {{ element.jun }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Jul">
+              <th mat-header-cell *matHeaderCellDef> Jul'{{curDate}} </th>
+              <td mat-cell *matCellDef="let element"> {{ element.july }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Aug">
+              <th mat-header-cell *matHeaderCellDef> Aug'{{curDate}} </th>
+              <td mat-cell *matCellDef="let element"> {{ element.aug }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Sep">
+              <th mat-header-cell *matHeaderCellDef> Sep'{{curDate}} </th>
+              <td mat-cell *matCellDef="let element"> {{ element.sep }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Oct">
+              <th mat-header-cell *matHeaderCellDef> Oct'{{curDate}} </th>
+              <td mat-cell *matCellDef="let element"> {{ element.oct }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Nov">
+              <th mat-header-cell *matHeaderCellDef> Nov'{{curDate}} </th>
+              <td mat-cell *matCellDef="let element"> {{ element.nov }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Dec">
+              <th mat-header-cell *matHeaderCellDef> Dec'{{curDate}} </th>
+              <td mat-cell *matCellDef="let element"> {{ element.dec }} </td>
+            </ng-container>
+            <ng-container matColumnDef="Action" class="mat-column" stickyEnd>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button matTooltip="Edit" (click)="editAccDetails(element)" matTooltipPosition="right"
+                  class="table-edit-button">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            
+            <tr class="mat-row " *matNoDataRow>
+              <td class="mat-cell no-data-found"  colspan="10">No data Found !</td>
+            </tr> 
+          </table>
+        </div>
+        <div class="paginator">
+          <mat-paginator #paginator fixed [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons>
+          </mat-paginator>
+        </div>
+    </div>
+  </div>
+ 

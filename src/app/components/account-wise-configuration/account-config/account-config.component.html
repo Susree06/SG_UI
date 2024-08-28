@@ -1,0 +1,41 @@
+<div class="container-fluid acc-config">
+  <div class="row">
+    <div class="col-sm-12">
+        <div class="row mb-2">
+          <div class="col-sm-6 "><h1 class="acc-title">Accounts Configuration</h1></div>
+          <div class="col-sm-6 d-flex justify-content-end"><button
+            *ngIf="isAdmin"
+            mat-raised-button
+            class="generate-button"
+            (click)="reportsPage()"
+          >
+            Upload Files
+          </button>
+        </div>
+        </div>
+    </div>
+    <div class="col-sm-12 ">
+        <mat-divider class="tab-underline"></mat-divider>
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+          <mat-tab label="Working Hours">
+            <app-working-hours></app-working-hours>
+          </mat-tab>
+          <mat-tab label="Leaves In %">
+            <app-leaves-in-percentage></app-leaves-in-percentage>
+          </mat-tab>
+          <mat-tab label="Holidays In Days">
+            <app-holidays-in-days></app-holidays-in-days>
+          </mat-tab>
+          <mat-tab label="Working Days">
+            <app-working-days></app-working-days>
+          </mat-tab>
+          <mat-tab label="Blended Rate In $">
+            <app-blended-rate></app-blended-rate>
+          </mat-tab>
+          <mat-tab label="Other Config">
+            <app-other-config></app-other-config>
+          </mat-tab>
+        </mat-tab-group>
+    </div>
+  </div>
+</div>

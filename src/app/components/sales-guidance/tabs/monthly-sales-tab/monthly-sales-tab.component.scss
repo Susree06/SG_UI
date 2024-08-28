@@ -1,0 +1,41 @@
+mat-table {
+    border: 1px solid #DEE2E6;
+    border-radius: 4px 4px 0px 0px;
+    }
+    .mat-column-Accounts,
+    .mat-column-Projects,
+    .mat-column-Average,
+    .mat-column-Location,
+    .mat-column-Jan,
+    .mat-column-Feb,
+    .mat-column-Mar,
+    .mat-column-Apr,
+    .mat-column-May,
+    .mat-column-Jun,
+    .mat-column-Jul,
+    .mat-column-Aug,
+    .mat-column-Sep,
+    .mat-column-Oct,
+    .mat-column-Nov,
+    .mat-column-Dec,
+    .mat-column-Action{
+        flex: 0 0 8%;
+    }
+    
+    .mat-cell-acc{
+     font-weight: bold;
+     border-radius:4px 0px 0px 0px;
+    }
+    .mat-column-Action{
+        border-radius:0px 4px 0px 0px;
+    }
+    
+    ::ng-deep .mat-mdc-header-row.mdc-data-table__header-row {
+        background: #F5FFF6;
+        border-radius: 4px 4px 0px 0px;
+    }
+    
+    .mat-mdc-row.mdc-data-table__row:nth-last-child(n+3){
+    background:#F8F9FA 0% 0% no-repeat padding-box;;
+    }
+

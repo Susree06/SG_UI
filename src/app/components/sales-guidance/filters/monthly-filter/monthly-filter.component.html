@@ -1,0 +1,30 @@
+<div class="filter-popup">
+  <div class="title-text">
+      <label class="header-text">Filter</label>
+      <mat-icon class="close-icon" (click)="onClose()">close</mat-icon>
+      </div>
+  <br/>
+      <label class="months-text">Months Duration : </label> <label class="note-text">(Note : you can only select maximum of 6 months)</label>
+  
+      <section class="example-section" [formGroup]="toppings">
+          <mat-checkbox formControlName="jan">Jan</mat-checkbox>
+          <mat-checkbox formControlName="feb">Feb</mat-checkbox>
+          <mat-checkbox formControlName="mar">Mar</mat-checkbox>
+          <mat-checkbox formControlName="apr">Apr</mat-checkbox>
+          <mat-checkbox formControlName="may">May</mat-checkbox>
+          <mat-checkbox formControlName="jun">Jun</mat-checkbox>
+        </section>
+  
+        <section class="example-section" [formGroup]="toppings">
+          <mat-checkbox formControlName="jan">Jul</mat-checkbox>
+          <mat-checkbox formControlName="feb">Aug</mat-checkbox>
+          <mat-checkbox formControlName="mar">Sep</mat-checkbox>
+          <mat-checkbox formControlName="apr">Oct</mat-checkbox>
+          <mat-checkbox formControlName="may">Nov</mat-checkbox>
+          <mat-checkbox formControlName="jun">Dec</mat-checkbox>
+        </section>
+  
+        <div class="sign-in-button">
+          <button mat-raised-button class="sign-button" (click)="reportsPage()">Apply</button>
+      </div>
+  </div>

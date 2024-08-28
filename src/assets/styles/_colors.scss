@@ -1,0 +1,89 @@
+//----------------------------------------------------------------------------
+
+// Settings: Colors
+
+//----------------------------------------------------------------------------
+
+ 
+
+$PALETTES: (
+
+  brand: (
+
+    shark: #2c2e34,
+
+    cod-gray: #1e1e1e,
+
+    athens-gray: #e9ecf0,
+
+    cello: #254067,
+
+    storm-gray: #6b7285,
+
+    gray: #939393,
+
+    black: #000,
+
+    bermuda-gray: #6f85a0,
+
+    aqua-haze: #eff2f6,
+
+    //OPS_Dasboard
+
+    wedgewood:#469494,
+
+    chateauGreen:#3bb54a,
+
+    sushi:#8cc64a,
+
+    bigStone-blue:#141C36,
+
+ 
+
+  ),
+
+  neutral: (
+
+    white: #ffffff,
+
+    botticelli: #c6d0e2,
+
+    sharck-boxshadow: #262830,
+
+    shuttle-ray: #5f636c,
+
+    mystic: #e4e8ef,
+
+    alto: #dbdbdb,
+
+    scorpion: #585858,
+
+    codGray: #191919,
+
+    abbey: #f6f9fd,
+
+    linkWater: #f7f9fd,
+
+    catSkillWhite: #e2e8f0,
+
+    zambezi: #5b5b5b,
+
+    linkWaterThin : #E9EEF8,
+
+  ),
+
+  status: (
+
+    error: #942020,
+
+  ),
+
+);
+
+ 
+
+@function palette($palette, $tone) {
+
+  @return map-get(map-get($PALETTES, $palette), $tone);
+
+}

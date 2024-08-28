@@ -1,0 +1,36 @@
+<div class="holidays-in-days-edit-dialog">
+  <h4 mat-dialog-title class="title">
+    {{ accountName | accountName }} {{ " | " + location }}
+    <strong>{{ currentYear }}</strong>
+    <mat-icon mat-dialog-close class="close-modal-icon float-end ml-4">close</mat-icon>
+  </h4>
+
+  <div mat-dialog-content>
+    <div class="sub-container">
+      <div *ngFor="let item of months">
+        <!-- {{ item.name }} -->
+        <form autocomplete="off" [formGroup]="editHolidaysForm">
+          <mat-form-field class="form-field-container" appearance="outline">
+            <mat-label class="custom-mat-label">{{ item.name }}</mat-label>
+            <input [formControlName]="item.ctrl" matInput type="text" maxlength="2" [value]="Holidays"
+              (input)="onChange($event.target)" numbersOnly />
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+
+    <div *ngFor="let mon of months">
+      <mat-error
+        *ngIf="this.editHolidaysForm.controls[mon.ctrl].hasError('max') || this.editHolidaysForm.controls[mon.ctrl].hasError('min')">
+        Please enter value between 0 to 10
+      </mat-error>
+    </div>
+  </div>
+
+  <br>
+  <div class="button-container">
+    <button mat-raised-button class="enable-button" (click)="onShowHoliday()">Show Holidays</button>
+    <button mat-raised-button [ngClass]="isFormValid()?'disable-button':'enable-button'" [disabled]="isFormValid()"
+      (click)="onUpdate()">Update</button>
+  </div>
+</div>
